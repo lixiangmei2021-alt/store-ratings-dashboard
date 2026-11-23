@@ -1,56 +1,2298 @@
-[
-  {
-    "at": "2026-11-23T10:35:02+08:00",
-    "changes": 0,
-    "google_ok": 34,
-    "google_total": 34,
-    "apple_ok": 32,
-    "apple_total": 32,
-    "errors": 0
-  },
-  {
-    "at": "2026-11-23T10:41:28+08:00",
-    "changes": 0,
-    "google_ok": 34,
-    "google_total": 34,
-    "apple_ok": 32,
-    "apple_total": 32,
-    "errors": 0
-  },
-  {
-    "at": "2026-11-23T11:02:47+08:00",
-    "changes": 0,
-    "google_ok": 34,
-    "google_total": 34,
-    "apple_ok": 32,
-    "apple_total": 32,
-    "errors": 0
-  },
-  {
-    "at": "2026-11-23T11:06:18+08:00",
-    "changes": 1,
-    "google_ok": 34,
-    "google_total": 34,
-    "apple_ok": 32,
-    "apple_total": 32,
-    "errors": 0
-  },
-  {
-    "at": "2026-11-23T11:07:37+08:00",
-    "changes": 0,
-    "google_ok": 34,
-    "google_total": 34,
-    "apple_ok": 32,
-    "apple_total": 32,
-    "errors": 0
-  },
-  {
-    "at": "2026-11-23T11:12:34+08:00",
-    "changes": 1,
-    "google_ok": 34,
-    "google_total": 34,
-    "apple_ok": 32,
-    "apple_total": 32,
-    "errors": 0
-  }
-]
+{
+  "version": 2,
+  "updated_at": "2026-11-23T12:05:21+08:00",
+  "snapshots": [
+    {
+      "at": "2026-11-16T10:07:08+08:00",
+      "changes": 0,
+      "change_items": [],
+      "metrics": {
+        "google_ok": 34,
+        "google_total": 34,
+        "apple_ok": 32,
+        "apple_total": 32
+      },
+      "errors": 0,
+      "ratings": {
+        "frontier": {
+          "US": [
+            4.0,
+            null,
+            null,
+            null
+          ],
+          "UK": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "AU": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "DE": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "FR": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "ES": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "MX": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "BR": [
+            3.9,
+            null,
+            5.0,
+            null
+          ],
+          "MY": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "ID": [
+            4.3,
+            null,
+            null,
+            null
+          ],
+          "PH": [
+            4.2,
+            null,
+            null,
+            null
+          ],
+          "UA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "RU": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "vice": {
+          "US": [
+            3.0,
+            null,
+            2.7,
+            null
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "AU": [
+            null,
+            null,
+            1.0,
+            null
+          ],
+          "SG": [
+            null,
+            null,
+            1.0,
+            null
+          ],
+          "MY": [
+            2.6,
+            null,
+            3.0,
+            null
+          ],
+          "UK": [
+            3.7,
+            null,
+            2.3,
+            null
+          ],
+          "DE": [
+            3.8,
+            null,
+            3.7,
+            null
+          ],
+          "FR": [
+            3.0,
+            null,
+            3.7,
+            null
+          ],
+          "ES": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "MX": [
+            2.8,
+            null,
+            1.8,
+            null
+          ],
+          "BR": [
+            3.4,
+            null,
+            null,
+            null
+          ],
+          "JP": [
+            3.4,
+            null,
+            4.2,
+            null
+          ],
+          "KR": [
+            4.1,
+            null,
+            4.7,
+            null
+          ],
+          "TW": [
+            null,
+            null,
+            3.8,
+            null
+          ],
+          "HK": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "MO": [
+            4.0,
+            null,
+            null,
+            null
+          ],
+          "UA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "RU": [
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "backfilled": true
+    },
+    {
+      "at": "2026-11-17T10:13:16+08:00",
+      "changes": 8,
+      "change_items": [
+        {
+          "country": "US",
+          "country_name": "美国",
+          "store": "apple",
+          "old": null,
+          "new": 1.0,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "BR",
+          "country_name": "巴西",
+          "store": "google",
+          "old": 3.9,
+          "new": 4.0,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "US",
+          "country_name": "美国",
+          "store": "apple",
+          "old": 2.7,
+          "new": 2.9,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "UK",
+          "country_name": "英国",
+          "store": "google",
+          "old": 3.7,
+          "new": 3.6,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "MX",
+          "country_name": "墨西哥",
+          "store": "google",
+          "old": 2.8,
+          "new": 2.6,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "JP",
+          "country_name": "日本",
+          "store": "google",
+          "old": 3.4,
+          "new": 3.3,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "JP",
+          "country_name": "日本",
+          "store": "apple",
+          "old": 4.2,
+          "new": 3.9,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "MO",
+          "country_name": "中国澳门",
+          "store": "google",
+          "old": 4.0,
+          "new": 3.9,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        }
+      ],
+      "metrics": {
+        "google_ok": 34,
+        "google_total": 34,
+        "apple_ok": 32,
+        "apple_total": 32
+      },
+      "errors": 0,
+      "ratings": {
+        "frontier": {
+          "US": [
+            4.0,
+            null,
+            1.0,
+            null
+          ],
+          "UK": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "AU": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "DE": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "FR": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "ES": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "MX": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "BR": [
+            4.0,
+            null,
+            5.0,
+            null
+          ],
+          "MY": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "ID": [
+            4.3,
+            null,
+            null,
+            null
+          ],
+          "PH": [
+            4.2,
+            null,
+            null,
+            null
+          ],
+          "UA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "RU": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "vice": {
+          "US": [
+            3.0,
+            null,
+            2.9,
+            null
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "AU": [
+            null,
+            null,
+            1.0,
+            null
+          ],
+          "SG": [
+            null,
+            null,
+            1.0,
+            null
+          ],
+          "MY": [
+            2.6,
+            null,
+            3.0,
+            null
+          ],
+          "UK": [
+            3.6,
+            null,
+            2.3,
+            null
+          ],
+          "DE": [
+            3.8,
+            null,
+            3.7,
+            null
+          ],
+          "FR": [
+            3.0,
+            null,
+            3.7,
+            null
+          ],
+          "ES": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "MX": [
+            2.6,
+            null,
+            1.8,
+            null
+          ],
+          "BR": [
+            3.4,
+            null,
+            null,
+            null
+          ],
+          "JP": [
+            3.3,
+            null,
+            3.9,
+            null
+          ],
+          "KR": [
+            4.1,
+            null,
+            4.7,
+            null
+          ],
+          "TW": [
+            null,
+            null,
+            3.8,
+            null
+          ],
+          "HK": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "MO": [
+            3.9,
+            null,
+            null,
+            null
+          ],
+          "UA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "RU": [
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "backfilled": true
+    },
+    {
+      "at": "2026-11-18T10:06:26+08:00",
+      "changes": 6,
+      "change_items": [
+        {
+          "country": "US",
+          "country_name": "美国",
+          "store": "google",
+          "old": 4.0,
+          "new": 3.8,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "BR",
+          "country_name": "巴西",
+          "store": "google",
+          "old": 4.0,
+          "new": 4.1,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "FR",
+          "country_name": "法国",
+          "store": "google",
+          "old": 3.0,
+          "new": 3.1,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "MX",
+          "country_name": "墨西哥",
+          "store": "google",
+          "old": 2.6,
+          "new": 2.8,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "JP",
+          "country_name": "日本",
+          "store": "google",
+          "old": 3.3,
+          "new": 3.5,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "KR",
+          "country_name": "韩国",
+          "store": "google",
+          "old": 4.1,
+          "new": 3.9,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        }
+      ],
+      "metrics": {
+        "google_ok": 34,
+        "google_total": 34,
+        "apple_ok": 32,
+        "apple_total": 32
+      },
+      "errors": 0,
+      "ratings": {
+        "frontier": {
+          "US": [
+            3.8,
+            null,
+            1.0,
+            null
+          ],
+          "UK": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "AU": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "DE": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "FR": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "ES": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "MX": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "BR": [
+            4.1,
+            null,
+            5.0,
+            null
+          ],
+          "MY": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "ID": [
+            4.3,
+            null,
+            null,
+            null
+          ],
+          "PH": [
+            4.2,
+            null,
+            null,
+            null
+          ],
+          "UA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "RU": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "vice": {
+          "US": [
+            3.0,
+            null,
+            2.9,
+            null
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "AU": [
+            null,
+            null,
+            1.0,
+            null
+          ],
+          "SG": [
+            null,
+            null,
+            1.0,
+            null
+          ],
+          "MY": [
+            2.6,
+            null,
+            3.0,
+            null
+          ],
+          "UK": [
+            3.6,
+            null,
+            2.3,
+            null
+          ],
+          "DE": [
+            3.8,
+            null,
+            3.7,
+            null
+          ],
+          "FR": [
+            3.1,
+            null,
+            3.7,
+            null
+          ],
+          "ES": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "MX": [
+            2.8,
+            null,
+            1.8,
+            null
+          ],
+          "BR": [
+            3.4,
+            null,
+            null,
+            null
+          ],
+          "JP": [
+            3.5,
+            null,
+            3.9,
+            null
+          ],
+          "KR": [
+            3.9,
+            null,
+            4.7,
+            null
+          ],
+          "TW": [
+            null,
+            null,
+            3.8,
+            null
+          ],
+          "HK": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "MO": [
+            3.9,
+            null,
+            null,
+            null
+          ],
+          "UA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "RU": [
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "backfilled": true
+    },
+    {
+      "at": "2026-11-20T10:47:15+08:00",
+      "changes": 11,
+      "change_items": [
+        {
+          "country": "US",
+          "country_name": "美国",
+          "store": "apple",
+          "old": 1.0,
+          "new": 4.5,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "UK",
+          "country_name": "英国",
+          "store": "apple",
+          "old": null,
+          "new": 5.0,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "DE",
+          "country_name": "德国",
+          "store": "google",
+          "old": null,
+          "new": 1.8,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "FR",
+          "country_name": "法国",
+          "store": "google",
+          "old": null,
+          "new": 1.8,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "BR",
+          "country_name": "巴西",
+          "store": "google",
+          "old": 4.1,
+          "new": 3.6,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "UA",
+          "country_name": "乌克兰",
+          "store": "google",
+          "old": null,
+          "new": 2.0,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "RU",
+          "country_name": "俄罗斯",
+          "store": "google",
+          "old": null,
+          "new": 1.9,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "US",
+          "country_name": "美国",
+          "store": "google",
+          "old": 3.0,
+          "new": 3.1,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "MX",
+          "country_name": "墨西哥",
+          "store": "google",
+          "old": 2.8,
+          "new": 2.6,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "JP",
+          "country_name": "日本",
+          "store": "google",
+          "old": 3.5,
+          "new": 3.3,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "RU",
+          "country_name": "俄罗斯",
+          "store": "google",
+          "old": null,
+          "new": 2.6,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        }
+      ],
+      "metrics": {
+        "google_ok": 34,
+        "google_total": 34,
+        "apple_ok": 32,
+        "apple_total": 32
+      },
+      "errors": 0,
+      "ratings": {
+        "frontier": {
+          "US": [
+            3.8,
+            null,
+            4.5,
+            null
+          ],
+          "UK": [
+            null,
+            null,
+            5.0,
+            null
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "AU": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "DE": [
+            1.8,
+            null,
+            null,
+            null
+          ],
+          "FR": [
+            1.8,
+            null,
+            null,
+            null
+          ],
+          "ES": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "MX": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "BR": [
+            3.6,
+            null,
+            5.0,
+            null
+          ],
+          "MY": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "ID": [
+            4.3,
+            null,
+            null,
+            null
+          ],
+          "PH": [
+            4.2,
+            null,
+            null,
+            null
+          ],
+          "UA": [
+            2.0,
+            null,
+            null,
+            null
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "RU": [
+            1.9,
+            null,
+            null,
+            null
+          ]
+        },
+        "vice": {
+          "US": [
+            3.1,
+            null,
+            2.9,
+            null
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "AU": [
+            null,
+            null,
+            1.0,
+            null
+          ],
+          "SG": [
+            null,
+            null,
+            1.0,
+            null
+          ],
+          "MY": [
+            2.6,
+            null,
+            3.0,
+            null
+          ],
+          "UK": [
+            3.6,
+            null,
+            2.3,
+            null
+          ],
+          "DE": [
+            3.8,
+            null,
+            3.7,
+            null
+          ],
+          "FR": [
+            3.1,
+            null,
+            3.7,
+            null
+          ],
+          "ES": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "MX": [
+            2.6,
+            null,
+            1.8,
+            null
+          ],
+          "BR": [
+            3.4,
+            null,
+            null,
+            null
+          ],
+          "JP": [
+            3.3,
+            null,
+            3.9,
+            null
+          ],
+          "KR": [
+            3.9,
+            null,
+            4.7,
+            null
+          ],
+          "TW": [
+            null,
+            null,
+            3.8,
+            null
+          ],
+          "HK": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "MO": [
+            3.9,
+            null,
+            null,
+            null
+          ],
+          "UA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "RU": [
+            2.6,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "backfilled": true
+    },
+    {
+      "at": "2026-11-23T10:35:02+08:00",
+      "changes": 0,
+      "change_items": [],
+      "metrics": {
+        "google_ok": null,
+        "google_total": null,
+        "apple_ok": null,
+        "apple_total": null
+      },
+      "errors": 0,
+      "legacy": true
+    },
+    {
+      "at": "2026-11-23T10:41:28+08:00",
+      "changes": 0,
+      "change_items": [],
+      "metrics": {
+        "google_ok": null,
+        "google_total": null,
+        "apple_ok": null,
+        "apple_total": null
+      },
+      "errors": 0,
+      "legacy": true
+    },
+    {
+      "at": "2026-11-23T10:43:00+08:00",
+      "changes": 15,
+      "change_items": [
+        {
+          "country": "US",
+          "country_name": "美国",
+          "store": "google",
+          "old": 3.8,
+          "new": 3.7,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "US",
+          "country_name": "美国",
+          "store": "apple",
+          "old": 4.5,
+          "new": 4.3,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "UK",
+          "country_name": "英国",
+          "store": "google",
+          "old": null,
+          "new": 3.7,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "DE",
+          "country_name": "德国",
+          "store": "google",
+          "old": 1.8,
+          "new": 2.2,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "FR",
+          "country_name": "法国",
+          "store": "google",
+          "old": 1.8,
+          "new": 2.2,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "BR",
+          "country_name": "巴西",
+          "store": "google",
+          "old": 3.6,
+          "new": 3.4,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "PH",
+          "country_name": "菲律宾",
+          "store": "google",
+          "old": 4.2,
+          "new": 4.3,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "UA",
+          "country_name": "乌克兰",
+          "store": "google",
+          "old": 2.0,
+          "new": 2.9,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "RU",
+          "country_name": "俄罗斯",
+          "store": "google",
+          "old": 1.9,
+          "new": 2.5,
+          "count": null,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "US",
+          "country_name": "美国",
+          "store": "google",
+          "old": 3.1,
+          "new": 3.2,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "FR",
+          "country_name": "法国",
+          "store": "google",
+          "old": 3.1,
+          "new": 3.2,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "ES",
+          "country_name": "西班牙",
+          "store": "google",
+          "old": null,
+          "new": 4.4,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "BR",
+          "country_name": "巴西",
+          "store": "google",
+          "old": 3.4,
+          "new": 3.3,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "KR",
+          "country_name": "韩国",
+          "store": "google",
+          "old": 3.9,
+          "new": 4.0,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "MO",
+          "country_name": "中国澳门",
+          "store": "google",
+          "old": 3.9,
+          "new": 4.0,
+          "count": null,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        }
+      ],
+      "metrics": {
+        "google_ok": 34,
+        "google_total": 34,
+        "apple_ok": 32,
+        "apple_total": 32
+      },
+      "errors": 0,
+      "ratings": {
+        "frontier": {
+          "US": [
+            3.7,
+            null,
+            4.3,
+            null
+          ],
+          "UK": [
+            3.7,
+            null,
+            5.0,
+            null
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "AU": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "DE": [
+            2.2,
+            null,
+            null,
+            null
+          ],
+          "FR": [
+            2.2,
+            null,
+            null,
+            null
+          ],
+          "ES": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "MX": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "BR": [
+            3.4,
+            null,
+            5.0,
+            null
+          ],
+          "MY": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "ID": [
+            4.3,
+            null,
+            null,
+            null
+          ],
+          "PH": [
+            4.3,
+            null,
+            null,
+            null
+          ],
+          "UA": [
+            2.9,
+            null,
+            null,
+            null
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "RU": [
+            2.5,
+            null,
+            null,
+            null
+          ]
+        },
+        "vice": {
+          "US": [
+            3.2,
+            null,
+            2.9,
+            null
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "AU": [
+            null,
+            null,
+            1.0,
+            null
+          ],
+          "SG": [
+            null,
+            null,
+            1.0,
+            null
+          ],
+          "MY": [
+            2.6,
+            null,
+            3.0,
+            null
+          ],
+          "UK": [
+            3.6,
+            null,
+            2.3,
+            null
+          ],
+          "DE": [
+            3.8,
+            null,
+            3.7,
+            null
+          ],
+          "FR": [
+            3.2,
+            null,
+            3.7,
+            null
+          ],
+          "ES": [
+            4.4,
+            null,
+            null,
+            null
+          ],
+          "MX": [
+            2.6,
+            null,
+            1.8,
+            null
+          ],
+          "BR": [
+            3.3,
+            null,
+            null,
+            null
+          ],
+          "JP": [
+            3.3,
+            null,
+            3.9,
+            null
+          ],
+          "KR": [
+            4.0,
+            null,
+            4.7,
+            null
+          ],
+          "TW": [
+            null,
+            null,
+            3.8,
+            null
+          ],
+          "HK": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "MO": [
+            4.0,
+            null,
+            null,
+            null
+          ],
+          "UA": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "RU": [
+            2.6,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "backfilled": true
+    },
+    {
+      "at": "2026-11-23T11:02:47+08:00",
+      "changes": 0,
+      "change_items": [],
+      "metrics": {
+        "google_ok": null,
+        "google_total": null,
+        "apple_ok": null,
+        "apple_total": null
+      },
+      "errors": 0,
+      "legacy": true
+    },
+    {
+      "at": "2026-11-23T11:06:18+08:00",
+      "changes": 1,
+      "change_items": [],
+      "metrics": {
+        "google_ok": null,
+        "google_total": null,
+        "apple_ok": null,
+        "apple_total": null
+      },
+      "errors": 0,
+      "legacy": true
+    },
+    {
+      "at": "2026-11-23T11:07:37+08:00",
+      "changes": 1,
+      "change_items": [
+        {
+          "country": "JP",
+          "country_name": "日本",
+          "store": "google",
+          "old": 3.3,
+          "new": 3.0,
+          "count": 228,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        }
+      ],
+      "metrics": {
+        "google_ok": 34,
+        "google_total": 34,
+        "apple_ok": 32,
+        "apple_total": 32
+      },
+      "errors": 0,
+      "ratings": {
+        "frontier": {
+          "US": [
+            3.7,
+            426,
+            4.3,
+            9
+          ],
+          "UK": [
+            3.7,
+            426,
+            5.0,
+            1
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "AU": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "DE": [
+            2.2,
+            426,
+            null,
+            0
+          ],
+          "FR": [
+            2.2,
+            426,
+            null,
+            0
+          ],
+          "ES": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "MX": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "BR": [
+            3.4,
+            426,
+            5.0,
+            1
+          ],
+          "MY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "ID": [
+            4.3,
+            426,
+            null,
+            0
+          ],
+          "PH": [
+            4.3,
+            426,
+            null,
+            0
+          ],
+          "UA": [
+            2.9,
+            426,
+            null,
+            0
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "RU": [
+            2.5,
+            56,
+            null,
+            null
+          ]
+        },
+        "vice": {
+          "US": [
+            3.2,
+            230,
+            2.9,
+            17
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "AU": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "SG": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "MY": [
+            2.6,
+            228,
+            3.0,
+            2
+          ],
+          "UK": [
+            3.6,
+            228,
+            2.3,
+            3
+          ],
+          "DE": [
+            3.8,
+            228,
+            3.7,
+            3
+          ],
+          "FR": [
+            3.2,
+            228,
+            3.7,
+            3
+          ],
+          "ES": [
+            4.4,
+            230,
+            null,
+            0
+          ],
+          "MX": [
+            2.6,
+            228,
+            1.8,
+            4
+          ],
+          "BR": [
+            3.3,
+            230,
+            null,
+            0
+          ],
+          "JP": [
+            3.0,
+            228,
+            3.9,
+            7
+          ],
+          "KR": [
+            4.0,
+            228,
+            4.7,
+            7
+          ],
+          "TW": [
+            null,
+            null,
+            3.8,
+            4
+          ],
+          "HK": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "MO": [
+            4.0,
+            230,
+            null,
+            0
+          ],
+          "UA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "RU": [
+            2.6,
+            15,
+            null,
+            null
+          ]
+        }
+      },
+      "backfilled": true
+    },
+    {
+      "at": "2026-11-23T11:12:34+08:00",
+      "changes": 1,
+      "change_items": [
+        {
+          "country": "JP",
+          "country_name": "日本",
+          "store": "google",
+          "old": 3.0,
+          "new": 3.3,
+          "count": 230,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        }
+      ],
+      "metrics": {
+        "google_ok": 34,
+        "google_total": 34,
+        "apple_ok": 32,
+        "apple_total": 32
+      },
+      "errors": 0,
+      "ratings": {
+        "frontier": {
+          "US": [
+            3.7,
+            426,
+            4.3,
+            9
+          ],
+          "UK": [
+            3.7,
+            426,
+            5.0,
+            1
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "AU": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "DE": [
+            2.2,
+            426,
+            null,
+            0
+          ],
+          "FR": [
+            2.2,
+            426,
+            null,
+            0
+          ],
+          "ES": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "MX": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "BR": [
+            3.4,
+            426,
+            5.0,
+            1
+          ],
+          "MY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "ID": [
+            4.3,
+            426,
+            null,
+            0
+          ],
+          "PH": [
+            4.3,
+            426,
+            null,
+            0
+          ],
+          "UA": [
+            2.9,
+            426,
+            null,
+            0
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "RU": [
+            2.5,
+            56,
+            null,
+            null
+          ]
+        },
+        "vice": {
+          "US": [
+            3.2,
+            230,
+            2.9,
+            17
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "AU": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "SG": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "MY": [
+            2.6,
+            228,
+            3.0,
+            2
+          ],
+          "UK": [
+            3.6,
+            230,
+            2.3,
+            3
+          ],
+          "DE": [
+            3.8,
+            230,
+            3.7,
+            3
+          ],
+          "FR": [
+            3.2,
+            230,
+            3.7,
+            3
+          ],
+          "ES": [
+            4.4,
+            230,
+            null,
+            0
+          ],
+          "MX": [
+            2.6,
+            228,
+            1.8,
+            4
+          ],
+          "BR": [
+            3.3,
+            228,
+            null,
+            0
+          ],
+          "JP": [
+            3.3,
+            230,
+            3.9,
+            7
+          ],
+          "KR": [
+            4.0,
+            230,
+            4.7,
+            7
+          ],
+          "TW": [
+            null,
+            null,
+            3.8,
+            4
+          ],
+          "HK": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "MO": [
+            4.0,
+            228,
+            null,
+            0
+          ],
+          "UA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "RU": [
+            2.6,
+            15,
+            null,
+            null
+          ]
+        }
+      },
+      "backfilled": true
+    },
+    {
+      "at": "2026-11-23T12:05:21+08:00",
+      "changes": 3,
+      "change_items": [
+        {
+          "country": "UA",
+          "country_name": "乌克兰",
+          "store": "google",
+          "old": 2.9,
+          "new": 2.7,
+          "count": 425,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "JP",
+          "country_name": "日本",
+          "store": "google",
+          "old": 3.3,
+          "new": 3.0,
+          "count": 225,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        },
+        {
+          "country": "MO",
+          "country_name": "中国澳门",
+          "store": "google",
+          "old": 4.0,
+          "new": 3.9,
+          "count": 225,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        }
+      ],
+      "metrics": {
+        "google_ok": 34,
+        "google_total": 34,
+        "apple_ok": 32,
+        "apple_total": 32
+      },
+      "errors": 0,
+      "ratings": {
+        "frontier": {
+          "US": [
+            3.7,
+            425,
+            4.3,
+            9
+          ],
+          "UK": [
+            3.7,
+            425,
+            5.0,
+            1
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "AU": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "DE": [
+            2.2,
+            425,
+            null,
+            0
+          ],
+          "FR": [
+            2.2,
+            425,
+            null,
+            0
+          ],
+          "ES": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "MX": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "BR": [
+            3.4,
+            425,
+            5.0,
+            1
+          ],
+          "MY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "ID": [
+            4.3,
+            425,
+            null,
+            0
+          ],
+          "PH": [
+            4.3,
+            425,
+            null,
+            0
+          ],
+          "UA": [
+            2.7,
+            425,
+            null,
+            0
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "RU": [
+            2.5,
+            56,
+            null,
+            null
+          ]
+        },
+        "vice": {
+          "US": [
+            3.2,
+            225,
+            2.9,
+            17
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "AU": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "SG": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "MY": [
+            2.6,
+            225,
+            3.0,
+            2
+          ],
+          "UK": [
+            3.6,
+            225,
+            2.3,
+            3
+          ],
+          "DE": [
+            3.8,
+            225,
+            3.7,
+            3
+          ],
+          "FR": [
+            3.2,
+            225,
+            3.7,
+            3
+          ],
+          "ES": [
+            4.4,
+            225,
+            null,
+            0
+          ],
+          "MX": [
+            2.6,
+            225,
+            1.8,
+            4
+          ],
+          "BR": [
+            3.3,
+            225,
+            null,
+            0
+          ],
+          "JP": [
+            3.0,
+            225,
+            3.9,
+            7
+          ],
+          "KR": [
+            4.0,
+            225,
+            4.7,
+            7
+          ],
+          "TW": [
+            null,
+            null,
+            3.8,
+            4
+          ],
+          "HK": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "MO": [
+            3.9,
+            225,
+            null,
+            0
+          ],
+          "UA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "RU": [
+            2.6,
+            15,
+            null,
+            null
+          ]
+        }
+      }
+    }
+  ]
+}

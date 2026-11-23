@@ -27,14 +27,38 @@
     <div class="meta" id="meta"></div>
   </section>
   <div class="toolbar">
-    <div class="hint">页面每 10 分钟自动重新载入；没有公开地区评分时显示“暂无评分”。</div>
-    <a class="button" id="xlsx" href="#">打开最新 Excel</a>
+    <div class="hint">每次刷新都会保存逐国评分；趋势与变化记录可从首次记录开始追踪。</div>
+    <div class="tool-actions"><a class="button secondary" id="historyFile" href="data/history.json" download>下载完整历史</a><a class="button" id="xlsx" href="#">打开最新 Excel</a></div>
   </div>
   <div class="errorbox" id="errorbox"></div>
   <div class="cards" id="cards"></div>
   <div id="products"></div>
-  <section class="history"><h2>最近更新记录</h2><div class="history-list" id="history"></div></section>
-  <div class="footer">本地离线看板 · 数据来自 Google Play 与 Apple iTunes Lookup · 最近刷新时间以页面顶部为准</div>
+  <section class="panel">
+    <div class="panel-head">
+      <div><h2>评分趋势</h2><p>选择产品和地区，查看历次刷新记录中的评分变化。</p></div>
+      <div class="filters">
+        <select id="trendProduct" aria-label="选择产品"><option value="frontier">Frontier City</option><option value="vice">Vice Throne</option></select>
+        <select id="trendCountry" aria-label="选择地区"></select>
+        <select id="trendStore" aria-label="选择商店"><option value="google">Google Play</option><option value="apple">App Store</option></select>
+      </div>
+    </div>
+    <div class="trend-stats" id="trendStats"></div>
+    <div class="chart-wrap" id="trendChart"></div>
+  </section>
+  <section class="panel">
+    <div class="panel-head">
+      <div><h2>评分变化记录</h2><p>只显示发生变化的评分；没有变化的刷新仍会保留在下方时间线。</p></div>
+      <div class="filters">
+        <select id="changeProduct" aria-label="筛选产品"><option value="all">全部产品</option><option value="frontier">Frontier City</option><option value="vice">Vice Throne</option></select>
+        <select id="changeStore" aria-label="筛选商店"><option value="all">全部商店</option><option value="google">Google Play</option><option value="apple">App Store</option></select>
+        <select id="changeDays" aria-label="筛选时间"><option value="7">最近 7 天</option><option value="30">最近 30 天</option><option value="0">全部历史</option></select>
+      </div>
+    </div>
+    <div class="table-wrap"><table class="data-table"><thead><tr><th>刷新时间</th><th>产品</th><th>地区</th><th>商店</th><th>评分变化</th></tr></thead><tbody id="changeBody"></tbody></table></div>
+    <div class="empty" id="changeEmpty">暂无评分变化记录。</div>
+  </section>
+  <section class="history" id="history-section"><div class="panel-head"><div><h2>刷新时间线</h2><p>每次自动或手动刷新都会记录，包括没有变化的刷新。</p></div></div><div class="timeline" id="history"></div></section>
+  <div class="footer">公开云端看板 · 数据来自 Google Play 与 Apple iTunes Lookup · 每 4 小时自动刷新</div>
 </div>
 <style>
 .table-wrap{overflow-x:auto}.table{width:100%;border-collapse:collapse;min-width:760px}.table th{padding:12px 16px;text-align:left;font-size:12px;color:#66768d;background:#f7f9fc;border-bottom:1px solid var(--line);white-space:nowrap}.table td{padding:12px 16px;border-bottom:1px solid #eef3f8;font-size:14px;vertical-align:middle}.table tr:last-child td{border-bottom:0}.table tbody tr:hover{background:#f8fbff}.country{font-weight:750;color:#172c49}.cn{display:block;font-size:11px;color:#8a97aa;font-weight:500;margin-top:2px}.rating{font-size:17px;font-weight:780;color:#193b65;white-space:nowrap}.rating.ios{color:#0b766f}.count{font-size:11px;color:#8491a4;margin-left:5px;font-weight:500}.none{font-size:12px;color:#9aa5b5}.stale{display:inline-block;font-size:10px;color:var(--warn);background:#fff7e6;border-radius:5px;padding:2px 5px;margin-left:5px}.links{display:flex;gap:7px}.mini{font-size:11px;text-decoration:none;padding:6px 8px;border-radius:7px;border:1px solid #d9e4f2;color:#3c608d;background:#fff;white-space:nowrap}.mini:hover{border-color:#9ebce5;background:#f5f9ff}.unavailable{font-size:11px;color:#9aa5b5;background:#f6f7f9;padding:6px 8px;border-radius:7px}
@@ -43,15 +67,36 @@
 .footer{color:#8a97aa;font-size:11px;margin-top:20px;text-align:center}.errorbox{display:none;background:#fff7e8;border:1px solid #f1d39b;color:#7c5b16;border-radius:12px;padding:11px 14px;margin:12px 0;font-size:12px}
 @media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:28px}.product-head{flex-direction:column}.badges{justify-content:flex-start}}
 @media(max-width:560px){.wrap{padding:14px 10px 40px}.hero{padding:23px 20px;border-radius:18px}.hero h1{font-size:24px}.cards{gap:9px}.card{padding:13px}.card .value{font-size:23px}.product-head{padding:18px}.notes{padding:14px 16px}.toolbar{align-items:flex-start;flex-direction:column}.table td,.table th{padding:10px 12px}}
+
+.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 22px;margin:18px 0;box-shadow:0 12px 36px rgba(29,58,94,.065)}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:14px}.panel-head h2{font-size:20px;margin:0 0 4px;letter-spacing:-.2px}.panel-head p{margin:0;color:var(--muted);font-size:12.5px}.filters{display:flex;gap:8px;flex-wrap:wrap}.filters select{border:1px solid #cfdcf0;background:#f8fbff;color:#27476c;border-radius:9px;padding:8px 11px;font-size:12px;font-weight:650;outline:none;cursor:pointer}
+.tool-actions{display:flex;gap:8px;flex-wrap:wrap}.button.secondary{color:#405a7a;border-color:#d6e1ef;box-shadow:none}.delta{display:inline-block;margin-left:6px;padding:2px 5px;border-radius:5px;font-size:10px;font-weight:750;vertical-align:1px}.delta.up{color:#087951;background:#e7f8ef}.delta.down{color:#a24444;background:#fdeeee}.delta.flat{color:#6f7e92;background:#eef2f7}
+.trend-stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.trend-stat{background:#f5f9ff;border:1px solid #e4edf8;border-radius:10px;padding:8px 11px;color:#687a92;font-size:11px}.trend-stat b{display:block;color:#1c3b60;font-size:16px;margin-top:2px}.chart-wrap{min-height:290px;background:linear-gradient(#fbfdff,#f7faff);border:1px solid #e9f0f8;border-radius:13px;padding:8px;overflow-x:auto}.chart-wrap svg{display:block;min-width:700px;width:100%;height:auto}
+.data-table{width:100%;border-collapse:collapse;min-width:760px}.data-table th{padding:11px 14px;text-align:left;font-size:11px;color:#66768d;background:#f7f9fc;border-bottom:1px solid var(--line);white-space:nowrap}.data-table td{padding:11px 14px;border-bottom:1px solid #eef3f8;font-size:12.5px;vertical-align:middle}.data-table tr:last-child td{border-bottom:0}.data-table tbody tr:hover{background:#f8fbff}.storetag{display:inline-flex;padding:4px 7px;border-radius:6px;background:#edf5ff;color:#2c5f9c;font-size:10px;font-weight:700}.storetag.apple{background:#eefaf8;color:#087e73}.old{color:#8290a3}.arrow{padding:0 7px;color:#95a3b6}.newval{font-weight:780;color:#193b65}.newval.up{color:#087951}.newval.down{color:#a24444}.empty{display:none;color:#8a97aa;font-size:12px;padding:20px 4px;text-align:center}
+.history{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 22px;margin-top:20px}.timeline{display:flex;flex-direction:column;gap:8px;max-height:520px;overflow:auto}.hist{display:grid;grid-template-columns:150px 1fr auto;gap:12px;align-items:center;padding:10px 12px;border-radius:10px;background:#f7faff;color:#61718a;font-size:11.5px;line-height:1.5;border:1px solid #edf3fa}.hist b{color:#25486f;font-size:12.5px}.hist .count{font-size:11px;color:#6c7e96}.hist .badge-mini{font-weight:700;padding:3px 7px;border-radius:6px;background:#eaf8f2;color:#0b7a56}.hist .badge-mini.zero{background:#eef2f7;color:#6d7b8e}.hist .badge-mini.err{background:#fff2df;color:#9b5a00}
+@media(max-width:900px){.panel-head{flex-direction:column}.chart-wrap svg{min-width:650px}.hist{grid-template-columns:1fr auto}.hist .count{grid-column:1/-1}}
+@media(max-width:560px){.panel{padding:14px 12px}.tool-actions{width:100%}.tool-actions .button{flex:1;justify-content:center}.filters select{flex:1}.hist{grid-template-columns:1fr}.hist .badge-mini{justify-self:start}}
 </style>
 <script>
 const DATA = __DATA__;
 const nf = new Intl.DateTimeFormat('zh-CN',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false});
 function fmtTime(s){try{return nf.format(new Date(s))}catch(e){return s||'--'}}
 function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function ratingHtml(v,count,cls,stale){
-  if(v===null||v===undefined) return '<span class="none">暂无评分</span>';
-  return '<span class="rating '+cls+'">'+Number(v).toFixed(1)+'</span><span class="count">'+(count?count+' 条':'')+'</span>'+(stale?'<span class="stale">沿用上次</span>':'');
+let HISTORY = Array.isArray(DATA.history) ? DATA.history.slice() : [];
+function historyMetrics(h){return h.metrics||{google_ok:h.google_ok,google_total:h.google_total,apple_ok:h.apple_ok,apple_total:h.apple_total};}
+function deltaBadge(change){
+  if(!change) return '';
+  if(change.old===null||change.old===undefined) return '<span class="delta up">新增</span>';
+  if(change.new===null||change.new===undefined) return '<span class="delta down">移除</span>';
+  const d=Number(change.new)-Number(change.old);
+  if(Math.abs(d)<0.05) return '';
+  return '<span class="delta '+(d>0?'up':'down')+'">'+(d>0?'+':'')+d.toFixed(1)+'</span>';
+}
+function ratingHtml(v,count,cls,stale,change){
+  let html='';
+  if(v===null||v===undefined){html='<span class="none">暂无评分</span>';}
+  else{html='<span class="rating '+cls+'">'+Number(v).toFixed(1)+'</span><span class="count">'+(count?count+' 条':'')+'</span>';}
+  return html+(stale?'<span class="stale">沿用上次</span>':'')+deltaBadge(change);
 }
 function renderMeta(){
   const m=DATA.metrics||{};const ok=(m.google_ok===m.google_total)&&(m.apple_ok===m.apple_total);
@@ -63,30 +108,101 @@ function renderMeta(){
   document.getElementById('xlsx').href=encodeURIComponent(DATA.xlsx_file);
 }
 function renderCards(){
-  const products=DATA.products||[];const total=products.reduce((a,p)=>a+p.total,0);const changes=Object.values(DATA.changes||{}).flat().filter(x=>!x.includes('与上次一致')&&!x.includes('更新状态')).length;
+  const products=DATA.products||[];const total=products.reduce((a,p)=>a+p.total,0);const changes=Object.values(DATA.latest_changes||{}).flat().length;
   document.getElementById('cards').innerHTML =
     '<div class="card"><div class="label">监测产品</div><div class="value">'+products.length+' 款</div><div class="sub">Google Play + App Store</div></div>'+
     '<div class="card"><div class="label">监测地区</div><div class="value">'+total+'</div><div class="sub">含两个 RU 独立包</div></div>'+
     '<div class="card"><div class="label">当前有评分项</div><div class="value">'+products.reduce((a,p)=>a+p.rated_google+p.rated_ios,0)+'</div><div class="sub">谷歌评分 + iOS 评分</div></div>'+
-    '<div class="card"><div class="label">变化说明条目</div><div class="value">'+changes+'</div><div class="sub">与上一次快照相比</div></div>';
+    '<div class="card"><div class="label">本次变化</div><div class="value">'+changes+'</div><div class="sub">已记录 '+HISTORY.length+' 次刷新</div></div>';
 }
 function renderProducts(){
   document.getElementById('products').innerHTML=(DATA.products||[]).map(p=>`
     <section class="product">
       <div class="product-head"><div><h2>${esc(p.name)}</h2><div class="desc">公开地区评分与商店直达链接</div></div><div class="badges"><span class="badge">谷歌 ${p.rated_google}/${p.total} 有评分</span><span class="badge ios">iOS ${p.rated_ios}/${p.total} 有评分</span></div></div>
       <div class="table-wrap"><table class="table"><thead><tr><th>国家/地区</th><th>谷歌评分</th><th>iOS 评分</th><th>商店链接</th></tr></thead><tbody>
-      ${p.rows.map(r=>`<tr><td><span class="country">${esc(r.country)}</span><span class="cn">${esc(r.country_name)}</span></td><td>${ratingHtml(r.google_rating,r.google_count,'',r.google_stale)}</td><td>${ratingHtml(r.ios_rating,r.ios_count,'ios',r.ios_stale)}</td><td><div class="links"><a class="mini" target="_blank" rel="noopener" href="${esc(r.google_url)}">Google Play</a>${r.ios_unavailable?'<span class="unavailable">App Store 不可用</span>':`<a class="mini" target="_blank" rel="noopener" href="${esc(r.apple_url)}">App Store</a>`}</div></td></tr>`).join('')}
+      ${p.rows.map(r=>`<tr><td><span class="country">${esc(r.country)}</span><span class="cn">${esc(r.country_name)}</span></td><td>${ratingHtml(r.google_rating,r.google_count,'',r.google_stale,r.google_change)}</td><td>${ratingHtml(r.ios_rating,r.ios_count,'ios',r.ios_stale,r.ios_change)}</td><td><div class="links"><a class="mini" target="_blank" rel="noopener" href="${esc(r.google_url)}">Google Play</a>${r.ios_unavailable?'<span class="unavailable">App Store 不可用</span>':`<a class="mini" target="_blank" rel="noopener" href="${esc(r.apple_url)}">App Store</a>`}</div></td></tr>`).join('')}
       </tbody></table></div>
       <div class="notes"><h3>本次数据变化</h3>${(p.changes||[]).map(x=>'<p>'+esc(x)+'</p>').join('')}</div>
     </section>`).join('');
 }
 function renderHistory(){
-  document.getElementById('history').innerHTML=(DATA.history||[]).slice().reverse().map(h=>'<div class="hist"><b>'+fmtTime(h.at)+'</b><span>'+(h.changes||0)+' 项变化</span><br><span>G '+(h.google_ok||0)+'/'+(h.google_total||0)+' · A '+(h.apple_ok||0)+'/'+(h.apple_total||0)+'</span></div>').join('')||'<div class="hist"><b>暂无历史</b><span>下一次更新后显示</span></div>';
+  const rows=HISTORY.slice().reverse();
+  document.getElementById('history').innerHTML=rows.map(h=>{
+    const m=historyMetrics(h);const errors=(m.apple_total-m.apple_ok)+(m.google_total-m.google_ok);
+    const detail=h.legacy?'早期摘要（尚未保存逐国明细）':((h.change_items&&h.change_items.length)?h.change_items.slice(0,3).map(e=>e.country+' '+(e.store==='google'?'谷歌':'iOS')+' '+fmtVal(e.old)+'→'+fmtVal(e.new)).join('；')+(h.change_items.length>3?'；另 '+(h.change_items.length-3)+' 项':''):'本轮无评分变化');
+    return '<div class="hist"><div><b>'+fmtTime(h.at)+'</b><br><span>G '+m.google_ok+'/'+m.google_total+' · A '+m.apple_ok+'/'+m.apple_total+'</span></div><div>'+esc(detail)+'</div><span class="badge-mini '+((h.changes||0)===0?'zero':'')+(errors?' err':'')+'">'+(errors?'异常 '+errors+' 项':'变化 '+(h.changes||0)+' 项')+'</span></div>';
+  }).join('')||'<div class="hist"><div><b>暂无历史</b></div><div>下一次更新后显示</div><span class="badge-mini zero">0 项</span></div>';
 }
-function renderErrors(){
-  if(DATA.errors&&DATA.errors.length){const box=document.getElementById('errorbox');box.style.display='block';box.textContent='部分数据抓取失败，已在对应评分旁标记“沿用上次”：'+DATA.errors.slice(0,4).join('；');}
+function fmtVal(v){return (v===null||v===undefined)?'暂无':Number(v).toFixed(1);}
+function scoreValue(arr,store){return arr?(store==='google'?arr[0]:arr[2]):null;}
+function refreshTrendCountries(){
+  const key=document.getElementById('trendProduct').value;
+  const product=(DATA.products||[]).find(p=>p.key===key)||DATA.products[0];
+  const sel=document.getElementById('trendCountry');
+  const previous=sel.value;
+  sel.innerHTML=product.rows.map(r=>'<option value="'+esc(r.country)+'">'+esc(r.country)+' · '+esc(r.country_name)+'</option>').join('');
+  if(product.rows.some(r=>r.country===previous)) sel.value=previous;
+  else if(product.rows.some(r=>r.country==='US')) sel.value='US';
+  renderTrend();
 }
-renderMeta();renderCards();renderProducts();renderHistory();renderErrors();
+function renderTrend(){
+  const key=document.getElementById('trendProduct').value;
+  const cc=document.getElementById('trendCountry').value;
+  const store=document.getElementById('trendStore').value;
+  const product=(DATA.products||[]).find(p=>p.key===key)||{name:key};
+  const points=[];
+  HISTORY.forEach(h=>{if(!h.ratings||!h.ratings[key]||!h.ratings[key][cc])return;const v=scoreValue(h.ratings[key][cc],store);if(v!==null&&v!==undefined)points.push({at:h.at,v:Number(v)});});
+  const stats=document.getElementById('trendStats');const chart=document.getElementById('trendChart');
+  if(!points.length){stats.innerHTML='';chart.innerHTML='<div class="empty" style="display:block">该地区尚无可用历史评分。首次重新抓取后会开始记录。</div>';return;}
+  const values=points.map(p=>p.v),first=values[0],last=values[values.length-1],delta=last-first;
+  stats.innerHTML='<span class="trend-stat">当前<b>'+last.toFixed(1)+'</b></span><span class="trend-stat">区间变化<b class="'+(delta>0.05?'up':(delta<-0.05?'down':''))+'">'+(delta>0?'+':'')+delta.toFixed(1)+'</b></span><span class="trend-stat">最低 / 最高<b>'+Math.min(...values).toFixed(1)+' / '+Math.max(...values).toFixed(1)+'</b></span><span class="trend-stat">记录点数<b>'+points.length+'</b></span>';
+  const W=900,H=290,L=52,R=22,T=24,B=40,pw=W-L-R,ph=H-T-B;
+  const x=i=>points.length===1?L+pw/2:L+(i/(points.length-1))*pw;
+  const y=v=>T+((5-v)/4)*ph;
+  let grid='';for(let v=1;v<=5;v++){grid+='<line x1="'+L+'" y1="'+y(v)+'" x2="'+(W-R)+'" y2="'+y(v)+'" stroke="#e7eef7" stroke-width="1"/><text x="'+(L-12)+'" y="'+(y(v)+4)+'" text-anchor="end" font-size="11" fill="#8795a8">'+v.toFixed(1)+'</text>';}
+  const path=points.map((p,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+y(p.v).toFixed(1)).join(' ');
+  const dots=points.map((p,i)=>'<circle cx="'+x(i).toFixed(1)+'" cy="'+y(p.v).toFixed(1)+'" r="4.2" fill="#fff" stroke="'+(store==='google'?'#2563eb':'#0b8f85')+'" stroke-width="2.2"><title>'+fmtTime(p.at)+' · '+p.v.toFixed(1)+'</title></circle>').join('');
+  const firstLabel=fmtTime(points[0].at),lastLabel=fmtTime(points[points.length-1].at);
+  chart.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(product.name+' '+cc+' 评分趋势')+'">'+grid+'<path d="'+path+'" fill="none" stroke="'+(store==='google'?'#2563eb':'#0b8f85')+'" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>'+dots+'<text x="'+L+'" y="'+(H-12)+'" font-size="11" fill="#7d8ba0">'+fmtTime(points[0].at)+'</text><text x="'+(W-R)+'" y="'+(H-12)+'" text-anchor="end" font-size="11" fill="#7d8ba0">'+lastLabel+'</text></svg>';
+}
+function allChangeEvents(){
+  const events=[];
+  HISTORY.forEach(h=>(h.change_items||[]).forEach(e=>events.push({...e,at:h.at})));
+  return events;
+}
+function renderChangeLog(){
+  const key=document.getElementById('changeProduct').value;const store=document.getElementById('changeStore').value;const days=Number(document.getElementById('changeDays').value);
+  const cutoff=days?Date.now()-days*86400000:0;
+  let events=allChangeEvents().filter(e=>(key==='all'||e.product===key)&&(store==='all'||e.store===store)&&(!cutoff||new Date(e.at).getTime()>=cutoff)).reverse();
+  const total=events.length;events=events.slice(0,300);
+  const body=document.getElementById('changeBody');const empty=document.getElementById('changeEmpty');
+  body.innerHTML=events.map(e=>{
+    const diff=(e.old!==null&&e.new!==null)?Number(e.new)-Number(e.old):0;const cls=diff>0.05?'up':(diff<-0.05?'down':'');
+    const productName=e.product_name||(e.product==='frontier'?'Frontier City':'Vice Throne');
+    return '<tr><td>'+fmtTime(e.at)+'</td><td>'+esc(productName)+'</td><td><span class="country">'+esc(e.country)+'</span><span class="cn" style="display:inline;margin-left:5px">'+esc(e.country_name||'')+'</span></td><td><span class="storetag '+(e.store==='apple'?'apple':'')+'">'+(e.store==='apple'?'App Store':'Google Play')+'</span></td><td><span class="old">'+fmtVal(e.old)+'</span><span class="arrow">→</span><span class="newval '+cls+'">'+fmtVal(e.new)+'</span>'+(e.count?'<span class="count">'+e.count+' 条</span>':'')+'</td></tr>';
+  }).join('');
+  empty.style.display=events.length?'none':'block';
+  empty.textContent=total?'当前筛选下暂无记录。':'暂无评分变化记录。';
+}
+async function loadFullHistory(){
+  if(!/^https?:/.test(location.protocol))return;
+  try{
+    const response=await fetch('data/history.json?ts='+Date.now(),{cache:'no-store'});
+    if(!response.ok)return;
+    const payload=await response.json();
+    if(Array.isArray(payload.snapshots)&&payload.snapshots.length){
+      HISTORY=payload.snapshots;DATA.history=HISTORY.slice(-20);
+      renderCards();renderHistory();refreshTrendCountries();renderChangeLog();
+    }
+  }catch(e){console.warn('历史数据加载失败',e);}
+}
+document.getElementById('trendProduct').addEventListener('change',refreshTrendCountries);
+document.getElementById('trendCountry').addEventListener('change',renderTrend);
+document.getElementById('trendStore').addEventListener('change',renderTrend);
+document.getElementById('changeProduct').addEventListener('change',renderChangeLog);
+document.getElementById('changeStore').addEventListener('change',renderChangeLog);
+document.getElementById('changeDays').addEventListener('change',renderChangeLog);
+renderMeta();renderCards();renderProducts();refreshTrendCountries();renderChangeLog();renderHistory();renderErrors();loadFullHistory();
 </script>
 </body>
 </html>

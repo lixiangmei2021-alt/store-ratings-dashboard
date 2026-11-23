@@ -389,39 +389,63 @@ def get_count(item: dict | None, store: str):
     return ((item or {}).get(store) or {}).get("rating_count")
 
 
-def build_changes(previous: dict, current: dict, key: str) -> list[str]:
+
+def collect_change_items(previous: dict, current: dict) -> dict[str, list[dict]]:
+    all_changes: dict[str, list[dict]] = {}
+    for game in GAMES:
+        key = game["key"]
+        cgame = current["games"][key]
+        items: list[dict] = []
+        for cc in [*game["countries"], "RU"]:
+            old = previous_item(previous, key, cc)
+            new = cgame["ru"] if cc == "RU" else cgame["countries"][cc]
+            for store in ("google", "apple"):
+                old_value = get_rating(old, store)
+                new_value = get_rating(new, store)
+                if old_value == new_value:
+                    continue
+                if old_value is None and new_value is None:
+                    continue
+                items.append({
+                    "country": cc,
+                    "country_name": COUNTRY_NAMES.get(cc, cc),
+                    "store": store,
+                    "old": old_value,
+                    "new": new_value,
+                    "count": get_count(new, store),
+                })
+        all_changes[key] = items
+    return all_changes
+
+
+def _compact_changes(items: list[dict]) -> str:
+    if not items:
+        return "各国家/地区评分与上次一致"
+    parts = []
+    for item in items[:8]:
+        cc, old, new, count = item["country"], item["old"], item["new"], item.get("count")
+        if old is None and new is not None:
+            text = f"{cc} 新增 {new:.1f}"
+        elif old is not None and new is None:
+            text = f"{cc} 转为暂无评分"
+        else:
+            text = f"{cc} {old:.1f}→{new:.1f}"
+        if item["store"] == "apple" and new is not None:
+            text += f"（{count or 0} 条）"
+        parts.append(text)
+    visible = "；".join(parts)
+    if len(items) > 8:
+        visible += f"；另有 {len(items) - 8} 个地区变化"
+    return visible + "。"
+
+
+def build_changes(previous: dict, current: dict, key: str, items: list[dict] | None = None) -> list[str]:
     game = next(g for g in GAMES if g["key"] == key)
     cgame = current["games"][key]
-    google_changes = []
-    apple_changes = []
-    for cc in game["countries"]:
-        old = previous_item(previous, key, cc)
-        new = cgame["countries"][cc]
-        old_g, new_g = get_rating(old, "google"), get_rating(new, "google")
-        if old_g is None and new_g is not None:
-            google_changes.append(f"{cc} 新增 {new_g:.1f}")
-        elif old_g is not None and new_g is None:
-            google_changes.append(f"{cc} 转为暂无评分")
-        elif old_g is not None and new_g is not None and abs(old_g - new_g) >= 0.05:
-            google_changes.append(f"{cc} {old_g:.1f}→{new_g:.1f}")
-
-        old_a, new_a = get_rating(old, "apple"), get_rating(new, "apple")
-        new_count = get_count(new, "apple")
-        if old_a is None and new_a is not None:
-            apple_changes.append(f"{cc} 新增 {new_a:.1f}（{new_count or 0} 条）")
-        elif old_a is not None and new_a is None:
-            apple_changes.append(f"{cc} 转为暂无评分")
-        elif old_a is not None and new_a is not None and abs(old_a - new_a) >= 0.05:
-            apple_changes.append(f"{cc} {old_a:.1f}→{new_a:.1f}（{new_count or 0} 条）")
-
-
-    def compact(items: list[str]) -> str:
-        if not items:
-            return "各国家/地区评分与上次一致"
-        visible = "；".join(items[:8])
-        if len(items) > 8:
-            visible += f"；另有 {len(items) - 8} 个地区变化"
-        return visible + "。"
+    if items is None:
+        items = collect_change_items(previous, current)[key]
+    google_items = [item for item in items if item["store"] == "google" and item["country"] != "RU"]
+    apple_items = [item for item in items if item["store"] == "apple"]
 
     old_ru = previous_item(previous, key, "RU")
     new_ru = cgame["ru"]
@@ -447,7 +471,12 @@ def build_changes(previous: dict, current: dict, key: str) -> list[str]:
                 stale += 1
     status_text += f"；{stale} 项沿用上次数据" if stale else "；无异常"
     status_text += "。"
-    return [f"? Google Play：{compact(google_changes)}", f"? iOS：{compact(apple_changes)}", f"? RU：{ru_text}", f"? 更新状态：{status_text}"]
+    return [
+        f"\u2022 Google Play：{_compact_changes(google_items)}",
+        f"\u2022 iOS：{_compact_changes(apple_items)}",
+        f"\u2022 RU：{ru_text}",
+        f"\u2022 更新状态：{status_text}",
+    ]
 
 
 def style_workbook(wb: Workbook, changes: dict[str, list[str]], current: dict) -> None:
@@ -598,40 +627,107 @@ def save_workbook(current: dict, changes: dict[str, list[str]]) -> tuple[Path, P
     return day_path, LATEST_XLSX
 
 
-def load_history() -> list:
-    if HISTORY_JSON.exists():
-        try:
-            value = json.loads(HISTORY_JSON.read_text(encoding="utf-8"))
-            return value if isinstance(value, list) else []
-        except Exception:
-            return []
-    return []
+
+def _snapshot_ratings(current: dict) -> dict:
+    ratings: dict[str, dict] = {}
+    for game in GAMES:
+        key = game["key"]
+        game_data = current["games"][key]
+        rows = {}
+        for cc in [*game["countries"], "RU"]:
+            item = game_data["ru"] if cc == "RU" else game_data["countries"][cc]
+            rows[cc] = [
+                get_rating(item, "google"),
+                get_count(item, "google"),
+                get_rating(item, "apple"),
+                get_count(item, "apple"),
+            ]
+        ratings[key] = rows
+    return ratings
 
 
-def change_summary(changes: dict[str, list[str]]) -> int:
-    count = 0
-    for lines in changes.values():
-        for line in lines[:2]:
-            body = line.split("：", 1)[-1]
-            if "与上次一致" in body:
+def compact_snapshot(current: dict, change_items: dict[str, list[dict]]) -> dict:
+    flat_items = []
+    for key in ("frontier", "vice"):
+        product_name = next(game["name"] for game in GAMES if game["key"] == key)
+        for item in change_items.get(key, []):
+            flat_items.append({**item, "product": key, "product_name": product_name})
+    return {
+        "at": current["fetched_at"],
+        "changes": len(flat_items),
+        "change_items": flat_items,
+        "metrics": current["metrics"],
+        "errors": len(current.get("errors", [])),
+        "ratings": _snapshot_ratings(current),
+    }
+
+
+def _normalise_legacy_snapshot(item: dict) -> dict:
+    return {
+        "at": item.get("at"),
+        "changes": item.get("changes", 0),
+        "change_items": [],
+        "metrics": {
+            "google_ok": item.get("google_ok"),
+            "google_total": item.get("google_total"),
+            "apple_ok": item.get("apple_ok"),
+            "apple_total": item.get("apple_total"),
+        },
+        "errors": item.get("errors", 0),
+        "legacy": True,
+    }
+
+
+def load_history() -> list[dict]:
+    if not HISTORY_JSON.exists():
+        return []
+    try:
+        value = json.loads(HISTORY_JSON.read_text(encoding="utf-8"))
+        if isinstance(value, dict):
+            values = value.get("snapshots") or []
+        elif isinstance(value, list):
+            values = value
+        else:
+            values = []
+        snapshots = []
+        for item in values:
+            if not isinstance(item, dict) or not item.get("at"):
                 continue
-            count += body.count("；") + (1 if body.strip() else 0)
-    return count
+            snapshots.append(item if isinstance(item.get("ratings"), dict) else _normalise_legacy_snapshot(item))
+        snapshots.sort(key=lambda item: item["at"])
+        return snapshots
+    except Exception:
+        return []
 
 
-def html_data(current: dict, changes: dict[str, list[str]], history: list, day_path: Path, status: dict) -> dict:
+def history_document(snapshots: list[dict]) -> dict:
+    return {
+        "version": 2,
+        "updated_at": snapshots[-1]["at"] if snapshots else None,
+        "snapshots": snapshots,
+    }
+
+
+def change_summary(change_items: dict[str, list[dict]]) -> int:
+    return sum(len(items) for items in change_items.values())
+
+
+def html_data(current: dict, changes: dict[str, list[str]], history: list[dict], day_path: Path, status: dict, change_items: dict[str, list[dict]]) -> dict:
     payload = {
         "updated_at": current["fetched_at"],
-        "next_update": (datetime.fromisoformat(current["fetched_at"]) + timedelta(hours=4)).isoformat(timespec="seconds"),
         "metrics": current["metrics"],
         "errors": current.get("errors", []),
         "changes": changes,
-        "history": history[-10:],
+        "latest_changes": change_items,
+        "history": history[-20:],
+        "history_total": len(history),
         "xlsx_file": LATEST_XLSX.name,
         "products": [],
     }
     for game in GAMES:
-        gdata = current["games"][game["key"]]
+        key = game["key"]
+        gdata = current["games"][key]
+        change_lookup = {(item["country"], item["store"]): item for item in change_items.get(key, [])}
         rows = []
         for cc in [*game["countries"], "RU"]:
             item = gdata["ru"] if cc == "RU" else gdata["countries"][cc]
@@ -647,17 +743,19 @@ def html_data(current: dict, changes: dict[str, list[str]], history: list, day_p
                 "google_stale": bool((item.get("google") or {}).get("stale")),
                 "ios_stale": bool((item.get("apple") or {}).get("stale")),
                 "ios_unavailable": cc == "RU",
+                "google_change": change_lookup.get((cc, "google")),
+                "ios_change": change_lookup.get((cc, "apple")),
             })
         rated_google = sum(1 for row in rows if row["google_rating"] is not None)
         rated_ios = sum(1 for row in rows if row["ios_rating"] is not None)
         payload["products"].append({
-            "key": game["key"],
+            "key": key,
             "name": game["name"],
             "rows": rows,
             "rated_google": rated_google,
             "rated_ios": rated_ios,
             "total": len(rows),
-            "changes": changes[game["key"]],
+            "changes": changes[key],
         })
     return payload
 
@@ -684,21 +782,17 @@ def main() -> int:
         if metrics["google_ok"] == 0 and metrics["apple_ok"] == 0:
             raise RuntimeError("Google Play 与 App Store 全部抓取失败，保留上次结果")
         apply_fallbacks(current, previous, logger)
-        changes = {game["key"]: build_changes(previous, current, game["key"]) for game in GAMES}
+        change_items = collect_change_items(previous, current)
+        changes = {game["key"]: build_changes(previous, current, game["key"], change_items[game["key"]]) for game in GAMES}
         day_path, latest_path = save_workbook(current, changes)
         history = load_history()
-        entry = {
-            "at": current["fetched_at"],
-            "changes": change_summary(changes),
-            "google_ok": metrics["google_ok"],
-            "google_total": metrics["google_total"],
-            "apple_ok": metrics["apple_ok"],
-            "apple_total": metrics["apple_total"],
-            "errors": len(current.get("errors", [])),
-        }
-        history.append(entry)
-        history = history[-300:]
-        atomic_json(HISTORY_JSON, history)
+        snapshot = compact_snapshot(current, change_items)
+        if history and history[-1]["at"] == snapshot["at"]:
+            history[-1] = snapshot
+        else:
+            history.append(snapshot)
+        history.sort(key=lambda item: item["at"])
+        atomic_json(HISTORY_JSON, history_document(history))
         atomic_json(LATEST_JSON, current)
         status = {
             "ok": True,
@@ -713,9 +807,9 @@ def main() -> int:
             "dashboard": str(DASHBOARD),
         }
         atomic_json(STATUS_JSON, status)
-        write_dashboard(html_data(current, changes, history, day_path, status))
-        logger.info("完成：%s；变化 %s 项；耗时 %.1fs", day_path, entry["changes"], current.get("duration_seconds") or 0)
-        print(json.dumps({"ok": True, "xlsx": str(day_path), "dashboard": str(DASHBOARD), "changes": entry["changes"], "errors": len(current.get("errors", []))}, ensure_ascii=False))
+        write_dashboard(html_data(current, changes, history, day_path, status, change_items))
+        logger.info("完成：%s；变化 %s 项；耗时 %.1fs", day_path, change_summary(change_items), current.get("duration_seconds") or 0)
+        print(json.dumps({"ok": True, "xlsx": str(day_path), "dashboard": str(DASHBOARD), "changes": change_summary(change_items), "errors": len(current.get("errors", []))}, ensure_ascii=False))
         return 0
     except Exception as exc:
         logger.exception("自动更新失败：%s", exc)

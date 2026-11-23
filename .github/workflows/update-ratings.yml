@@ -64,6 +64,7 @@ jobs:
           data = json.loads(Path("data/latest.json").read_text(encoding="utf-8"))
           Path("_site/data").mkdir(exist_ok=True)
           Path("_site/data/latest.json").write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+          Path("_site/data/history.json").write_bytes(Path("data/history.json").read_bytes())
           PY
 
       - name: Upload Pages artifact

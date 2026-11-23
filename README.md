@@ -7,6 +7,7 @@ Frontier City 与 Vice Throne 的逐国家/地区 Google Play、App Store 评分
 
 - 公开网址由 GitHub Pages 提供。
 - GitHub Actions 每 4 小时自动抓取一次，并刷新页面与 Excel。
+- 每次刷新都会保存逐国评分快照，可查看趋势图、评分涨跌和完整刷新时间线。
 - 无公开地区评分时显示“暂无评分”，不使用全球评分或默认评分回退。
 - 数据仅来自公开商店页面，不需要登录，也不会收集访问者信息。
 
