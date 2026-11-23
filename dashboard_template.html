@@ -57,7 +57,7 @@ function renderMeta(){
   const m=DATA.metrics||{};const ok=(m.google_ok===m.google_total)&&(m.apple_ok===m.apple_total);
   document.getElementById('meta').innerHTML =
     '<span class="pill"><span class="dot'+(ok?'':' warn')+'"></span>最近更新 '+fmtTime(DATA.updated_at)+'</span>'+
-    '<span class="pill">下次预计 '+fmtTime(DATA.next_update)+'</span>'+
+    '<span class="pill">自动刷新 · 每 4 小时</span>'+
     '<span class="pill">Google Play '+(m.google_ok||0)+'/'+(m.google_total||0)+'</span>'+
     '<span class="pill">App Store '+(m.apple_ok||0)+'/'+(m.apple_total||0)+'</span>';
   document.getElementById('xlsx').href=encodeURIComponent(DATA.xlsx_file);

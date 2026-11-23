@@ -1,5 +1,8 @@
 # 双端商店评分看板
 
+公开网址：https://lixiangmei2021-alt.github.io/store-ratings-dashboard/
+
+
 Frontier City 与 Vice Throne 的逐国家/地区 Google Play、App Store 评分看板。
 
 - 公开网址由 GitHub Pages 提供。
