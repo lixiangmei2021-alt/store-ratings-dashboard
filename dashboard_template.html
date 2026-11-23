@@ -35,15 +35,16 @@
   <div id="products"></div>
   <section class="panel">
     <div class="panel-head">
-      <div><h2>评分趋势</h2><p>选择产品和地区，查看历次刷新记录中的评分变化。</p></div>
+      <div><h2>评分趋势</h2><p>选择产品和商店，在同一张图对比全部国家/地区的评分走势。</p></div>
       <div class="filters">
         <select id="trendProduct" aria-label="选择产品"><option value="frontier">Frontier City</option><option value="vice">Vice Throne</option></select>
-        <select id="trendCountry" aria-label="选择地区"></select>
         <select id="trendStore" aria-label="选择商店"><option value="google">Google Play</option><option value="apple">App Store</option></select>
       </div>
     </div>
     <div class="trend-stats" id="trendStats"></div>
+    <div class="trend-legend" id="trendLegend"></div>
     <div class="chart-wrap" id="trendChart"></div>
+    <div class="trend-help">点击图例可隐藏或显示曲线；悬停图例可突出对应国家。</div>
   </section>
   <section class="panel">
     <div class="panel-head">
@@ -71,7 +72,7 @@
 .panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 22px;margin:18px 0;box-shadow:0 12px 36px rgba(29,58,94,.065)}
 .panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:14px}.panel-head h2{font-size:20px;margin:0 0 4px;letter-spacing:-.2px}.panel-head p{margin:0;color:var(--muted);font-size:12.5px}.filters{display:flex;gap:8px;flex-wrap:wrap}.filters select{border:1px solid #cfdcf0;background:#f8fbff;color:#27476c;border-radius:9px;padding:8px 11px;font-size:12px;font-weight:650;outline:none;cursor:pointer}
 .tool-actions{display:flex;gap:8px;flex-wrap:wrap}.button.secondary{color:#405a7a;border-color:#d6e1ef;box-shadow:none}.delta{display:inline-block;margin-left:6px;padding:2px 5px;border-radius:5px;font-size:10px;font-weight:750;vertical-align:1px}.delta.up{color:#087951;background:#e7f8ef}.delta.down{color:#a24444;background:#fdeeee}.delta.flat{color:#6f7e92;background:#eef2f7}
-.trend-stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.trend-stat{background:#f5f9ff;border:1px solid #e4edf8;border-radius:10px;padding:8px 11px;color:#687a92;font-size:11px}.trend-stat b{display:block;color:#1c3b60;font-size:16px;margin-top:2px}.chart-wrap{min-height:290px;background:linear-gradient(#fbfdff,#f7faff);border:1px solid #e9f0f8;border-radius:13px;padding:8px;overflow-x:auto}.chart-wrap svg{display:block;min-width:700px;width:100%;height:auto}
+.trend-stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.trend-stat{background:#f5f9ff;border:1px solid #e4edf8;border-radius:10px;padding:8px 11px;color:#687a92;font-size:11px}.trend-stat b{display:block;color:#1c3b60;font-size:16px;margin-top:2px}.trend-stat small{font-size:11px;color:#6d7f95;font-weight:600;margin-left:3px}.trend-legend{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}.legend-item{appearance:none;display:inline-flex;align-items:center;gap:6px;border:1px solid #dfe9f5;background:#fff;border-radius:8px;padding:6px 9px;font:inherit;font-size:11.5px;font-weight:600;color:#456079;cursor:pointer;line-height:1;transition:border-color .15s,background .15s,opacity .15s}.legend-item:hover,.legend-item:focus-visible{border-color:#96b8e4;background:#f4f9ff;outline:none}.legend-item.muted{opacity:.34;background:#f3f5f8}.legend-swatch{width:14px;height:3px;border-radius:2px;flex:0 0 auto}.legend-score{font-weight:800;color:#183b62;margin-left:2px}.chart-wrap{min-height:390px;background:linear-gradient(#fbfdff,#f7faff);border:1px solid #e9f0f8;border-radius:13px;padding:8px;overflow-x:auto}.chart-wrap svg{display:block;min-width:760px;width:100%;height:auto}.trend-series{transition:opacity .12s}.trend-series.dim{opacity:.08}.trend-help{margin-top:8px;color:#8190a4;font-size:11px}
 .data-table{width:100%;border-collapse:collapse;min-width:760px}.data-table th{padding:11px 14px;text-align:left;font-size:11px;color:#66768d;background:#f7f9fc;border-bottom:1px solid var(--line);white-space:nowrap}.data-table td{padding:11px 14px;border-bottom:1px solid #eef3f8;font-size:12.5px;vertical-align:middle}.data-table tr:last-child td{border-bottom:0}.data-table tbody tr:hover{background:#f8fbff}.storetag{display:inline-flex;padding:4px 7px;border-radius:6px;background:#edf5ff;color:#2c5f9c;font-size:10px;font-weight:700}.storetag.apple{background:#eefaf8;color:#087e73}.old{color:#8290a3}.arrow{padding:0 7px;color:#95a3b6}.newval{font-weight:780;color:#193b65}.newval.up{color:#087951}.newval.down{color:#a24444}.empty{display:none;color:#8a97aa;font-size:12px;padding:20px 4px;text-align:center}
 .history{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 22px;margin-top:20px}.timeline{display:flex;flex-direction:column;gap:8px;max-height:520px;overflow:auto}.hist{display:grid;grid-template-columns:150px 1fr auto;gap:12px;align-items:center;padding:10px 12px;border-radius:10px;background:#f7faff;color:#61718a;font-size:11.5px;line-height:1.5;border:1px solid #edf3fa}.hist b{color:#25486f;font-size:12.5px}.hist .count{font-size:11px;color:#6c7e96}.hist .badge-mini{font-weight:700;padding:3px 7px;border-radius:6px;background:#eaf8f2;color:#0b7a56}.hist .badge-mini.zero{background:#eef2f7;color:#6d7b8e}.hist .badge-mini.err{background:#fff2df;color:#9b5a00}
 @media(max-width:900px){.panel-head{flex-direction:column}.chart-wrap svg{min-width:650px}.hist{grid-template-columns:1fr auto}.hist .count{grid-column:1/-1}}
@@ -135,35 +136,65 @@ function renderHistory(){
 }
 function fmtVal(v){return (v===null||v===undefined)?'暂无':Number(v).toFixed(1);}
 function scoreValue(arr,store){return arr?(store==='google'?arr[0]:arr[2]):null;}
-function refreshTrendCountries(){
-  const key=document.getElementById('trendProduct').value;
-  const product=(DATA.products||[]).find(p=>p.key===key)||DATA.products[0];
-  const sel=document.getElementById('trendCountry');
-  const previous=sel.value;
-  sel.innerHTML=product.rows.map(r=>'<option value="'+esc(r.country)+'">'+esc(r.country)+' · '+esc(r.country_name)+'</option>').join('');
-  if(product.rows.some(r=>r.country===previous)) sel.value=previous;
-  else if(product.rows.some(r=>r.country==='US')) sel.value='US';
-  renderTrend();
+function scoreCount(arr,store){return arr?(store==='google'?arr[1]:arr[3]):null;}
+const TREND_COLORS=['#2563eb','#0b8f85','#d97706','#7c3aed','#dc2626','#0891b2','#65a30d','#db2777','#4f46e5','#ea580c','#0d9488','#ca8a04','#9333ea','#e11d48','#0284c7','#16a34a','#c026d3','#b45309','#475569'];
+const hiddenTrendSeries=new Set();
+let trendHoverCountry=null;
+function updateTrendHighlight(){
+  document.querySelectorAll('#trendChart .trend-series').forEach(g=>{
+    const hidden=hiddenTrendSeries.has(g.dataset.country);
+    g.style.display=hidden?'none':'';
+    g.classList.toggle('dim',!!trendHoverCountry&&g.dataset.country!==trendHoverCountry);
+  });
+  document.querySelectorAll('#trendLegend .legend-item').forEach(btn=>btn.classList.toggle('muted',hiddenTrendSeries.has(btn.dataset.country)));
 }
 function renderTrend(){
   const key=document.getElementById('trendProduct').value;
-  const cc=document.getElementById('trendCountry').value;
   const store=document.getElementById('trendStore').value;
-  const product=(DATA.products||[]).find(p=>p.key===key)||{name:key};
-  const points=[];
-  HISTORY.forEach(h=>{if(!h.ratings||!h.ratings[key]||!h.ratings[key][cc])return;const v=scoreValue(h.ratings[key][cc],store);if(v!==null&&v!==undefined)points.push({at:h.at,v:Number(v)});});
-  const stats=document.getElementById('trendStats');const chart=document.getElementById('trendChart');
-  if(!points.length){stats.innerHTML='';chart.innerHTML='<div class="empty" style="display:block">该地区尚无可用历史评分。首次重新抓取后会开始记录。</div>';return;}
-  const values=points.map(p=>p.v),first=values[0],last=values[values.length-1],delta=last-first;
-  stats.innerHTML='<span class="trend-stat">当前<b>'+last.toFixed(1)+'</b></span><span class="trend-stat">区间变化<b class="'+(delta>0.05?'up':(delta<-0.05?'down':''))+'">'+(delta>0?'+':'')+delta.toFixed(1)+'</b></span><span class="trend-stat">最低 / 最高<b>'+Math.min(...values).toFixed(1)+' / '+Math.max(...values).toFixed(1)+'</b></span><span class="trend-stat">记录点数<b>'+points.length+'</b></span>';
-  const W=900,H=290,L=52,R=22,T=24,B=40,pw=W-L-R,ph=H-T-B;
-  const x=i=>points.length===1?L+pw/2:L+(i/(points.length-1))*pw;
+  const product=(DATA.products||[]).find(p=>p.key===key)||{name:key,rows:[]};
+  const snapshots=HISTORY.filter(h=>h.ratings&&h.ratings[key]).slice().sort((a,b)=>new Date(a.at)-new Date(b.at));
+  const series=(product.rows||[]).map((row,index)=>{
+    const points=[];
+    snapshots.forEach((h,i)=>{
+      const values=h.ratings[key][row.country];
+      const v=scoreValue(values,store);
+      if(v!==null&&v!==undefined)points.push({i,at:h.at,v:Number(v),count:scoreCount(values,store)});
+    });
+    return {country:row.country,name:row.country_name,color:TREND_COLORS[index%TREND_COLORS.length],points,last:points.length?points[points.length-1]:null};
+  });
+  const withData=series.filter(s=>s.points.length);
+  const stats=document.getElementById('trendStats');const chart=document.getElementById('trendChart');const legend=document.getElementById('trendLegend');
+  if(!snapshots.length||!withData.length){stats.innerHTML='';legend.innerHTML='';chart.innerHTML='<div class="empty" style="display:block">暂无可用历史评分，下一次刷新后会开始记录。</div>';return;}
+  const ranked=withData.slice().sort((a,b)=>b.last.v-a.last.v);
+  const high=ranked[0],low=ranked[ranked.length-1];
+  stats.innerHTML='<span class="trend-stat">有评分地区<b>'+withData.length+' / '+series.length+'</b></span><span class="trend-stat">当前最高<b>'+high.last.v.toFixed(1)+'</b><small>'+esc(high.country)+'</small></span><span class="trend-stat">当前最低<b>'+low.last.v.toFixed(1)+'</b><small>'+esc(low.country)+'</small></span><span class="trend-stat">刷新记录<b>'+snapshots.length+'</b><small>次</small></span>';
+  legend.innerHTML=series.map(s=>'<button type="button" class="legend-item" data-country="'+esc(s.country)+'" title="'+esc(s.country+' '+s.name)+'，点击隐藏或显示"><span class="legend-swatch" style="background:'+s.color+'"></span><span>'+esc(s.country)+' '+esc(s.name)+'</span><span class="legend-score">'+(s.last?s.last.v.toFixed(1):'暂无')+'</span></button>').join('');
+  legend.querySelectorAll('.legend-item').forEach(btn=>{
+    const cc=btn.dataset.country;
+    btn.addEventListener('mouseenter',()=>{trendHoverCountry=cc;updateTrendHighlight();});
+    btn.addEventListener('mouseleave',()=>{trendHoverCountry=null;updateTrendHighlight();});
+    btn.addEventListener('focus',()=>{trendHoverCountry=cc;updateTrendHighlight();});
+    btn.addEventListener('blur',()=>{trendHoverCountry=null;updateTrendHighlight();});
+    btn.addEventListener('click',()=>{hiddenTrendSeries.has(cc)?hiddenTrendSeries.delete(cc):hiddenTrendSeries.add(cc);updateTrendHighlight();});
+  });
+  const W=980,H=440,L=54,R=24,T=24,B=48,pw=W-L-R,ph=H-T-B;
+  const x=i=>snapshots.length===1?L+pw/2:L+(i/(snapshots.length-1))*pw;
   const y=v=>T+((5-v)/4)*ph;
   let grid='';for(let v=1;v<=5;v++){grid+='<line x1="'+L+'" y1="'+y(v)+'" x2="'+(W-R)+'" y2="'+y(v)+'" stroke="#e7eef7" stroke-width="1"/><text x="'+(L-12)+'" y="'+(y(v)+4)+'" text-anchor="end" font-size="11" fill="#8795a8">'+v.toFixed(1)+'</text>';}
-  const path=points.map((p,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+y(p.v).toFixed(1)).join(' ');
-  const dots=points.map((p,i)=>'<circle cx="'+x(i).toFixed(1)+'" cy="'+y(p.v).toFixed(1)+'" r="4.2" fill="#fff" stroke="'+(store==='google'?'#2563eb':'#0b8f85')+'" stroke-width="2.2"><title>'+fmtTime(p.at)+' · '+p.v.toFixed(1)+'</title></circle>').join('');
-  const firstLabel=fmtTime(points[0].at),lastLabel=fmtTime(points[points.length-1].at);
-  chart.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(product.name+' '+cc+' 评分趋势')+'">'+grid+'<path d="'+path+'" fill="none" stroke="'+(store==='google'?'#2563eb':'#0b8f85')+'" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>'+dots+'<text x="'+L+'" y="'+(H-12)+'" font-size="11" fill="#7d8ba0">'+fmtTime(points[0].at)+'</text><text x="'+(W-R)+'" y="'+(H-12)+'" text-anchor="end" font-size="11" fill="#7d8ba0">'+lastLabel+'</text></svg>';
+  const tickCount=Math.min(6,snapshots.length);
+  const tickIndices=[...new Set(Array.from({length:tickCount},(_,i)=>Math.round(i*(snapshots.length-1)/Math.max(1,tickCount-1))))];
+  const xLabels=tickIndices.map(i=>{const anchor=i===0?'start':(i===snapshots.length-1?'end':'middle');return '<text x="'+x(i).toFixed(1)+'" y="'+(H-16)+'" text-anchor="'+anchor+'" font-size="10.5" fill="#7d8ba0">'+fmtTime(snapshots[i].at)+'</text>';}).join('');
+  const xTicks=tickIndices.map(i=>'<line x1="'+x(i).toFixed(1)+'" y1="'+T+'" x2="'+x(i).toFixed(1)+'" y2="'+(H-B)+'" stroke="#eef3f9" stroke-width="1"/>').join('');
+  const paths=series.map(s=>{
+    const segments=[];let current=[];
+    s.points.forEach(p=>{if(current.length&&p.i!==current[current.length-1].i+1){if(current.length>1)segments.push(current);current=[];}current.push(p);});
+    if(current.length>1)segments.push(current);
+    const path=segments.map(seg=>'<path d="'+seg.map((p,i)=>(i?'L':'M')+x(p.i).toFixed(1)+' '+y(p.v).toFixed(1)).join(' ')+'" fill="none" stroke="'+s.color+'" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/>').join('');
+    const dots=s.points.map(p=>'<circle cx="'+x(p.i).toFixed(1)+'" cy="'+y(p.v).toFixed(1)+'" r="'+(s.points.length===1?3.2:2.2)+'" fill="#fff" stroke="'+s.color+'" stroke-width="1.8"><title>'+esc(s.country+' '+s.name+' · '+fmtTime(p.at)+' · '+p.v.toFixed(1)+(p.count!==null&&p.count!==undefined?'（'+p.count+' 条）':''))+'</title></circle>').join('');
+    return '<g class="trend-series" data-country="'+esc(s.country)+'">'+path+dots+'</g>';
+  }).join('');
+  chart.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(product.name+' 全部国家地区评分趋势')+'">'+grid+xTicks+paths+xLabels+'</svg>';
+  updateTrendHighlight();
 }
 function allChangeEvents(){
   const events=[];
@@ -192,17 +223,16 @@ async function loadFullHistory(){
     const payload=await response.json();
     if(Array.isArray(payload.snapshots)&&payload.snapshots.length){
       HISTORY=payload.snapshots;DATA.history=HISTORY.slice(-20);
-      renderCards();renderHistory();refreshTrendCountries();renderChangeLog();
+      renderCards();renderHistory();renderTrend();renderChangeLog();
     }
   }catch(e){console.warn('历史数据加载失败',e);}
 }
-document.getElementById('trendProduct').addEventListener('change',refreshTrendCountries);
-document.getElementById('trendCountry').addEventListener('change',renderTrend);
-document.getElementById('trendStore').addEventListener('change',renderTrend);
+document.getElementById('trendProduct').addEventListener('change',()=>{hiddenTrendSeries.clear();trendHoverCountry=null;renderTrend();});
+document.getElementById('trendStore').addEventListener('change',()=>{hiddenTrendSeries.clear();trendHoverCountry=null;renderTrend();});
 document.getElementById('changeProduct').addEventListener('change',renderChangeLog);
 document.getElementById('changeStore').addEventListener('change',renderChangeLog);
 document.getElementById('changeDays').addEventListener('change',renderChangeLog);
-renderMeta();renderCards();renderProducts();refreshTrendCountries();renderChangeLog();renderHistory();renderErrors();loadFullHistory();
+renderMeta();renderCards();renderProducts();renderTrend();renderChangeLog();renderHistory();renderErrors();loadFullHistory();
 </script>
 </body>
 </html>
