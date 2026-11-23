@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "fetched_at": "2026-11-23T21:03:59+08:00",
+  "fetched_at": "2026-11-24T00:54:39+08:00",
   "games": {
     "frontier": {
       "name": "Frontier City",
@@ -16,8 +16,8 @@
           "google": {
             "ok": true,
             "rating": 3.7,
-            "rating_count": 428,
-            "rating_count_text": "428 reviews",
+            "rating_count": 439,
+            "rating_count_text": "439 reviews",
             "title": "Frontier City",
             "error": null
           },
@@ -41,8 +41,8 @@
           "google": {
             "ok": true,
             "rating": 3.7,
-            "rating_count": 428,
-            "rating_count_text": "428 reviews",
+            "rating_count": 439,
+            "rating_count_text": "439 reviews",
             "title": "Frontier City",
             "error": null
           },
@@ -116,8 +116,8 @@
           "google": {
             "ok": true,
             "rating": 2.2,
-            "rating_count": 428,
-            "rating_count_text": "428 Rezensionen",
+            "rating_count": 439,
+            "rating_count_text": "439 Rezensionen",
             "title": "Frontier City",
             "error": null
           },
@@ -140,9 +140,9 @@
           "apple_url": "https://apps.apple.com/fr/app/frontier-city/id6751943304?uo=4",
           "google": {
             "ok": true,
-            "rating": 2.6,
-            "rating_count": 428,
-            "rating_count_text": "428 avis",
+            "rating": 2.4,
+            "rating_count": 439,
+            "rating_count_text": "439 avis",
             "title": "Frontier City",
             "error": null
           },
@@ -165,9 +165,9 @@
           "apple_url": "https://apps.apple.com/es/app/frontier-city/id6751943304?uo=4",
           "google": {
             "ok": true,
-            "rating": null,
-            "rating_count": null,
-            "rating_count_text": null,
+            "rating": 3.4,
+            "rating_count": 439,
+            "rating_count_text": "439 reseñas",
             "title": "Frontier City",
             "error": null
           },
@@ -215,9 +215,9 @@
           "apple_url": "https://apps.apple.com/br/app/frontier-city/id6751943304?uo=4",
           "google": {
             "ok": true,
-            "rating": 3.4,
-            "rating_count": 428,
-            "rating_count_text": "428 avaliações",
+            "rating": 3.5,
+            "rating_count": 439,
+            "rating_count_text": "439 avaliações",
             "title": "Frontier City",
             "error": null
           },
@@ -241,8 +241,8 @@
           "google": {
             "ok": true,
             "rating": 3.0,
-            "rating_count": 428,
-            "rating_count_text": "428 reviews",
+            "rating_count": 439,
+            "rating_count_text": "439 reviews",
             "title": "Frontier City",
             "error": null
           },
@@ -266,8 +266,8 @@
           "google": {
             "ok": true,
             "rating": 4.3,
-            "rating_count": 428,
-            "rating_count_text": "428 ulasan",
+            "rating_count": 439,
+            "rating_count_text": "439 ulasan",
             "title": "Frontier City",
             "error": null
           },
@@ -291,8 +291,8 @@
           "google": {
             "ok": true,
             "rating": 4.3,
-            "rating_count": 428,
-            "rating_count_text": "428 reviews",
+            "rating_count": 439,
+            "rating_count_text": "439 reviews",
             "title": "Frontier City",
             "error": null
           },
@@ -316,8 +316,8 @@
           "google": {
             "ok": true,
             "rating": 2.7,
-            "rating_count": 428,
-            "rating_count_text": "Відгуки: 428",
+            "rating_count": 439,
+            "rating_count_text": "Відгуки: 439",
             "title": "Frontier City",
             "error": null
           },
@@ -366,9 +366,9 @@
         "apple_url": null,
         "google": {
           "ok": true,
-          "rating": 2.5,
-          "rating_count": 57,
-          "rating_count_text": "Отзывы: 57",
+          "rating": 2.4,
+          "rating_count": 61,
+          "rating_count_text": "Отзывы: 61",
           "title": "Frontier City",
           "error": null
         },
@@ -396,8 +396,8 @@
           "google": {
             "ok": true,
             "rating": 3.2,
-            "rating_count": 227,
-            "rating_count_text": "227 reviews",
+            "rating_count": 229,
+            "rating_count_text": "229 reviews",
             "title": "Vice Throne",
             "error": null
           },
@@ -496,8 +496,8 @@
           "google": {
             "ok": true,
             "rating": 2.6,
-            "rating_count": 227,
-            "rating_count_text": "227 reviews",
+            "rating_count": 229,
+            "rating_count_text": "229 reviews",
             "title": "Vice Throne",
             "error": null
           },
@@ -521,8 +521,8 @@
           "google": {
             "ok": true,
             "rating": 3.6,
-            "rating_count": 227,
-            "rating_count_text": "227 reviews",
+            "rating_count": 229,
+            "rating_count_text": "229 reviews",
             "title": "Vice Throne",
             "error": null
           },
@@ -546,8 +546,8 @@
           "google": {
             "ok": true,
             "rating": 3.8,
-            "rating_count": 227,
-            "rating_count_text": "227 Rezensionen",
+            "rating_count": 229,
+            "rating_count_text": "229 Rezensionen",
             "title": "Vice Throne",
             "error": null
           },
@@ -571,8 +571,8 @@
           "google": {
             "ok": true,
             "rating": 3.2,
-            "rating_count": 227,
-            "rating_count_text": "227 avis",
+            "rating_count": 229,
+            "rating_count_text": "229 avis",
             "title": "Vice Throne",
             "error": null
           },
@@ -596,8 +596,8 @@
           "google": {
             "ok": true,
             "rating": 4.4,
-            "rating_count": 227,
-            "rating_count_text": "227 reseñas",
+            "rating_count": 229,
+            "rating_count_text": "229 reseñas",
             "title": "Vice Throne",
             "error": null
           },
@@ -621,8 +621,8 @@
           "google": {
             "ok": true,
             "rating": 2.6,
-            "rating_count": 227,
-            "rating_count_text": "227 reseñas",
+            "rating_count": 229,
+            "rating_count_text": "229 reseñas",
             "title": "Vice Throne",
             "error": null
           },
@@ -646,8 +646,8 @@
           "google": {
             "ok": true,
             "rating": 3.3,
-            "rating_count": 227,
-            "rating_count_text": "227 avaliações",
+            "rating_count": 229,
+            "rating_count_text": "229 avaliações",
             "title": "Vice Throne",
             "error": null
           },
@@ -671,8 +671,8 @@
           "google": {
             "ok": true,
             "rating": 3.0,
-            "rating_count": 227,
-            "rating_count_text": "227 件のレビュー",
+            "rating_count": 229,
+            "rating_count_text": "229 件のレビュー",
             "title": "Vice Throne",
             "error": null
           },
@@ -696,8 +696,8 @@
           "google": {
             "ok": true,
             "rating": 3.9,
-            "rating_count": 227,
-            "rating_count_text": "리뷰 227개",
+            "rating_count": 229,
+            "rating_count_text": "리뷰 229개",
             "title": "Vice Throne",
             "error": null
           },
@@ -770,9 +770,9 @@
           "apple_url": "https://apps.apple.com/mo/app/vice-throne/id6798176762?uo=4",
           "google": {
             "ok": true,
-            "rating": 3.9,
-            "rating_count": 227,
-            "rating_count_text": "227則評論",
+            "rating": 4.0,
+            "rating_count": 229,
+            "rating_count_text": "229則評論",
             "title": "Vice Throne",
             "error": null
           },
@@ -870,6 +870,6 @@
     "apple_total": 32
   },
   "errors": [],
-  "finished_at": "2026-11-23T21:04:31+08:00",
-  "duration_seconds": 32.2
+  "finished_at": "2026-11-24T00:55:13+08:00",
+  "duration_seconds": 34.1
 }
