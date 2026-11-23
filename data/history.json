@@ -1,0 +1,29 @@
+[
+  {
+    "at": "2026-11-23T10:35:02+08:00",
+    "changes": 0,
+    "google_ok": 34,
+    "google_total": 34,
+    "apple_ok": 32,
+    "apple_total": 32,
+    "errors": 0
+  },
+  {
+    "at": "2026-11-23T10:41:28+08:00",
+    "changes": 0,
+    "google_ok": 34,
+    "google_total": 34,
+    "apple_ok": 32,
+    "apple_total": 32,
+    "errors": 0
+  },
+  {
+    "at": "2026-11-23T11:02:47+08:00",
+    "changes": 0,
+    "google_ok": 34,
+    "google_total": 34,
+    "apple_ok": 32,
+    "apple_total": 32,
+    "errors": 0
+  }
+]

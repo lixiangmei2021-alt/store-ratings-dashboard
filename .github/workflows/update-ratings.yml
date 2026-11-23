@@ -1,0 +1,83 @@
+name: Update store ratings
+
+on:
+  schedule:
+    - cron: "0 */4 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "data/**"
+      - "index.html"
+      - "商店评分汇总_latest.xlsx"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: store-ratings-pages
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      DASHBOARD_NAME: index.html
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Update ratings
+        run: python update_ratings.py
+
+      - name: Commit refreshed data
+        run: |
+          git config user.name "store-ratings-bot"
+          git config user.email "store-ratings-bot@users.noreply.github.com"
+          git add data/latest.json data/history.json 商店评分汇总_latest.xlsx index.html
+          if git diff --cached --quiet; then
+            echo "No data changes"
+          else
+            git commit -m "Update store ratings [skip ci]"
+            git push
+          fi
+
+      - name: Prepare Pages artifact
+        run: |
+          mkdir -p _site
+          cp index.html _site/index.html
+          cp 商店评分汇总_latest.xlsx _site/商店评分汇总_latest.xlsx
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("data/latest.json").read_text(encoding="utf-8"))
+          Path("_site/data").mkdir(exist_ok=True)
+          Path("_site/data/latest.json").write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+          PY
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: update
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
