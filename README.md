@@ -25,6 +25,16 @@ Frontier City 与 Vice Throne 的逐国家/地区 Google Play、App Store 评分
 
 令牌只保存在当前浏览器的 localStorage，不写入公开网页或仓库，可随时在看板中清除或在 GitHub 撤销。其他访客仍可查看看板，但没有令牌不能启动更新。
 
+### 启动失败（403）
+
+403 表示 GitHub 拒绝了令牌，通常是下面三种之一：
+
+- 创建令牌的账号不是仓库所有者，也没有被添加为协作者（需要 Write 权限）。
+- Fine-grained 令牌没有把 **Repository permissions → Actions** 设为 **Read and write**。
+- 经典令牌没有同时勾选 `repo` 与 `workflow`。
+
+在弹窗中点 **检测令牌权限**，会显示当前账号、仓库权限、Actions 权限，并指出具体是哪一步不通过。
+
 ### 页面看起来是旧版
 
 如果点 **手动更新** 后直接跳到 GitHub 仓库、看不到弹窗，说明浏览器用了缓存页面，按 `Ctrl+F5`（Mac：`⌘+Shift+R`）强制刷新。工具栏会显示当前页面版本号，可与 `version.json` 对照。
