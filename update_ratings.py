@@ -26,7 +26,7 @@ STATUS_JSON = DATA_DIR / "status.json"
 DASHBOARD = ROOT / os.environ.get("DASHBOARD_NAME", "评分看板.html")
 LATEST_XLSX = ROOT / "商店评分汇总_latest.xlsx"
 VERSION_JSON = ROOT / "version.json"
-PAGE_VERSION = "2026-11-24.3"
+PAGE_VERSION = "2026-11-24.4"
 TZ = ZoneInfo("Asia/Shanghai")
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "

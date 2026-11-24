@@ -31,7 +31,7 @@
     <button class="button strong" id="reloadPage" type="button">立即刷新</button>
   </div>
   <div class="toolbar">
-    <div class="hint">每次刷新都会保存逐国评分；趋势与变化记录可从首次记录开始追踪。<span class="ver">页面版本 <b id="pageVersion">2026-11-24.3</b> · 若看不到版本号，说明是旧缓存，请按 Ctrl+F5</span></div>
+    <div class="hint">每次刷新都会保存逐国评分；趋势与变化记录可从首次记录开始追踪。<span class="ver">页面版本 <b id="pageVersion">2026-11-24.4</b> · 若看不到版本号，说明是旧缓存，请按 Ctrl+F5</span></div>
     <div class="tool-actions"><button class="button" id="manualUpdate" type="button" title="在本页立即启动评分更新">手动更新</button><a class="button secondary" id="historyFile" href="data/history.json" download>下载完整历史</a><a class="button" id="xlsx" href="#">打开最新 Excel</a></div>
   </div>
   <div class="errorbox" id="errorbox"></div>
@@ -110,6 +110,7 @@
         <a class="button secondary" href="https://github.com/lixiangmei2021-alt/store-ratings-dashboard/actions/workflows/update-ratings.yml" target="_blank" rel="noopener noreferrer">备用：查看运行页</a>
       </div>
       <p class="field-help">更新通常需要 1–2 分钟，完成后页面会自动刷新。其他访客仍可正常查看，但只有保存了令牌的浏览器才能启动更新。</p>
+      <p class="field-help" id="tokenInfo"></p>
     </div>
     <div class="update-status" id="updateStatus">尚未配置更新令牌。</div>
     <p class="dialog-foot">如果点“手动更新”后直接跳到 GitHub 仓库、看不到这个弹窗，说明浏览器还在用旧页面：按 <b>Ctrl+F5</b>（Mac 为 ⌘+Shift+R）强制刷新一次即可。</p>
@@ -318,14 +319,19 @@ const PAGE_VERSION=document.getElementById('pageVersion').textContent.trim();
 const updateDialog=document.getElementById('updateDialog');
 let updatePollTimer=null;
 function getUpdateToken(){try{return localStorage.getItem(UPDATE_TOKEN_KEY)||''}catch(e){return ''}}
-function setUpdateStatus(text,state){const el=document.getElementById('updateStatus');el.textContent=text;el.className='update-status'+(state?' '+state:'');}
+function setUpdateStatus(text,state){const el=document.getElementById('updateStatus');el.textContent=text;el.className='update-status'+(state?' '+state:'');el.dataset.touched=(state||text.length>40)?'1':'';}
 function setUpdateBusy(busy){const btn=document.getElementById('manualUpdate');btn.disabled=busy;btn.textContent=busy?'更新中…':'手动更新';document.getElementById('startUpdate').disabled=busy;}
 function refreshUpdatePanel(showSetup){
   const token=getUpdateToken();
   document.getElementById('tokenSetup').hidden=!!token&&!showSetup;
   document.getElementById('updateControls').hidden=!token||!!showSetup;
-  if(!token)setUpdateStatus('首次使用需保存更新令牌。令牌不会上传到本网站，只保存在当前浏览器。','');
-  else if(!showSetup)setUpdateStatus('更新令牌已保存，可以立即更新。','');
+  const info=document.getElementById('tokenInfo');
+  if(info)info.textContent=token?('当前令牌：'+tokenLabel(token)+'，末尾 '+token.slice(-4)+'（内容不可回显）'):'';
+  const status=document.getElementById('updateStatus');
+  if(!status.dataset.touched){
+    if(!token)setUpdateStatus('首次使用需保存更新令牌。令牌不会上传到本网站，只保存在当前浏览器。','');
+    else if(!showSetup)setUpdateStatus('令牌已保存。点“检测令牌权限”可验证读写权限，或直接点“立即更新”。','');
+  }
 }
 function openUpdateDialog(){
   refreshUpdatePanel(false);
