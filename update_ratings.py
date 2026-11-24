@@ -354,9 +354,21 @@ def apply_fallbacks(current: dict, previous: dict, logger: logging.Logger) -> No
             old = previous_item(previous, key, cc) or {}
             for store in ("google", "apple"):
                 rec = current_item.get(store) or {}
+                old_rec = old.get(store) or {}
+                if (
+                    store == "apple"
+                    and rec.get("ok")
+                    and int(rec.get("rating_count") or 0) == 0
+                    and old_rec.get("rating") is not None
+                    and int(old_rec.get("rating_count") or 0) > 0
+                ):
+                    rec["rating"] = old_rec.get("rating")
+                    rec["rating_count"] = old_rec.get("rating_count")
+                    rec["stale"] = True
+                    logger.warning("%s %s App Store 返回 0 条评分，沿用上次数据 %s", game["name"], cc, rec["rating"])
+                    continue
                 if rec.get("ok"):
                     continue
-                old_rec = old.get(store) or {}
                 if old_rec.get("rating") is not None or old_rec.get("rating_count") is not None:
                     rec["rating"] = old_rec.get("rating")
                     rec["rating_count"] = old_rec.get("rating_count")
