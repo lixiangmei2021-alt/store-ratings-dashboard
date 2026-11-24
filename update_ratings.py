@@ -186,11 +186,58 @@ def parse_apple(body: bytes) -> dict:
         "available": True,
         "rating": float(rating) if rating is not None else None,
         "rating_count": count,
+        "rating_source": "itunes_lookup",
         "track_id": item.get("trackId"),
         "track_name": item.get("trackName"),
         "bundle_id": item.get("bundleId"),
         "url": item.get("trackViewUrl"),
         "error": None,
+    }
+
+
+def parse_apple_page(body: bytes) -> dict:
+    """Read the public App Store page when iTunes Lookup transiently reports zero ratings."""
+    source = body.decode("utf-8", errors="ignore")
+    scripts = re.findall(
+        r'<script[^>]+type="application/ld\+json"[^>]*>(.*?)</script>',
+        source,
+        re.S | re.I,
+    )
+    for raw in scripts:
+        try:
+            data = json.loads(html.unescape(raw).strip())
+        except Exception:
+            continue
+        stack = [data]
+        while stack:
+            node = stack.pop()
+            if isinstance(node, dict):
+                if node.get("@type") == "AggregateRating":
+                    rating = node.get("ratingValue")
+                    count = node.get("reviewCount", node.get("ratingCount"))
+                    rating_count = parse_count(str(count)) if count is not None else None
+                    try:
+                        rating_value = float(str(rating).replace(",", "."))
+                    except (TypeError, ValueError):
+                        rating_value = None
+                    if rating_value is not None and rating_value > 0 and rating_count:
+                        return {
+                            "ok": True,
+                            "available": True,
+                            "rating": rating_value,
+                            "rating_count": rating_count,
+                            "rating_source": "app_store_page",
+                            "error": None,
+                        }
+                stack.extend(node.values())
+            elif isinstance(node, list):
+                stack.extend(node)
+    return {
+        "ok": False,
+        "available": True,
+        "rating": None,
+        "rating_count": None,
+        "error": "App Store 页面未找到评分",
     }
 
 
@@ -253,6 +300,22 @@ def scrape(logger: logging.Logger) -> dict:
                 a_rec = parse_apple(ibody)
                 if a_rec.get("ok"):
                     result["metrics"]["apple_ok"] += 1
+                    if a_rec.get("available") and int(a_rec.get("rating_count") or 0) == 0:
+                        page_url = apple_url(game, cc, a_rec)
+                        page_body, _ = fetch(page_url, timeout=25)
+                        if page_body is not None:
+                            page_rec = parse_apple_page(page_body)
+                            if page_rec.get("rating") is not None and int(page_rec.get("rating_count") or 0) > 0:
+                                a_rec.update({
+                                    "rating": page_rec["rating"],
+                                    "rating_count": page_rec["rating_count"],
+                                    "rating_source": "app_store_page",
+                                })
+                                a_rec.pop("stale", None)
+                                logger.info(
+                                    "%s %s App Store page fallback: %s / %s",
+                                    game["name"], cc, a_rec["rating"], a_rec["rating_count"],
+                                )
                 else:
                     result["errors"].append(f"{game['name']} {cc} App Store: {a_rec.get('error')}")
             logger.info("%s %s App Store: %s / %s", game["name"], cc, a_rec.get("rating"), a_rec.get("rating_count"))

@@ -13,7 +13,7 @@ Frontier City 与 Vice Throne 的逐国家/地区 Google Play、App Store 评分
 
 ## 手动更新
 
-进入仓库的 **Actions** 页面，选择 **Update store ratings**，点击 **Run workflow**。
+点击看板上的 **手动更新**，或进入仓库的 **Actions** 页面，选择 **Update store ratings**，点击 **Run workflow**。需要登录拥有该仓库权限的 GitHub 账号；运行完成后刷新看板即可看到结果。
 
 ## 本地运行
 
