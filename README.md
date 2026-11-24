@@ -15,7 +15,7 @@ Frontier City 与 Vice Throne 的逐国家/地区 Google Play、App Store 评分
 
 点看板上的 **手动更新**，首次使用按弹窗里的步骤配置一次令牌：
 
-1. 点 **打开 GitHub 创建令牌**，GitHub 会打开经典令牌页面并自动勾选 `public_repo` 与 `workflow`。
+1. 点 **打开 GitHub 创建令牌**，GitHub 会打开经典令牌页面并自动勾选 `repo` 与 `workflow`（建议同时设置较短有效期）。
 2. 点页面底部的 **Generate token**，复制以 `ghp_` 开头的令牌。
 3. 回到看板粘贴，点 **保存并启用**。
 

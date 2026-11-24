@@ -77,12 +77,12 @@
         <li><b>创建令牌</b>
           <p>点下面的按钮，GitHub 令牌页会自动勾选所需权限。</p>
           <div class="dialog-actions tight">
-            <a class="button strong" href="https://github.com/settings/tokens/new?scopes=public_repo,workflow&amp;description=Store%20ratings%20dashboard" target="_blank" rel="noopener noreferrer">打开 GitHub 创建令牌</a>
+            <a class="button strong" href="https://github.com/settings/tokens/new?scopes=repo,workflow&amp;description=Store%20ratings%20dashboard" target="_blank" rel="noopener noreferrer">打开 GitHub 创建令牌</a>
             <a class="button secondary" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">改用 Fine-grained（权限更小）</a>
           </div>
         </li>
         <li><b>确认权限</b>
-          <p>经典令牌确认已勾选 <code>public_repo</code> 与 <code>workflow</code>；Fine-grained 令牌请选择仓库 <code>store-ratings-dashboard</code>，并把仓库权限 <code>Actions</code> 设为 <b>Read and write</b>。</p>
+          <p>经典令牌确认已勾选 <code>repo</code> 与 <code>workflow</code>；Fine-grained 令牌请选择仓库 <code>store-ratings-dashboard</code>，并把仓库权限 <code>Actions</code> 设为 <b>Read and write</b>。创建令牌的账号需要该仓库的写入权限（本人或协作者）。</p>
         </li>
         <li><b>生成并粘贴</b>
           <p>点页面底部的 <b>Generate token</b>，复制以 <code>ghp_</code> 或 <code>github_pat_</code> 开头的令牌，粘贴到下面输入框。</p>
@@ -98,7 +98,7 @@
       <div class="dialog-actions">
         <button class="button strong" id="saveUpdateToken" type="button">保存并启用</button>
       </div>
-      <p class="field-help">令牌只保存在这台电脑的当前浏览器（localStorage），不会上传到网站，也不会写入公开仓库；可随时在下方“清除令牌”或到 GitHub 撤销。</p>
+      <p class="field-help">令牌只保存在这台电脑的当前浏览器（localStorage），不会上传到网站，也不会写入公开仓库。建议在 GitHub 创建时把有效期设为任意较短天数，用完可随时删除。</p>
     </div>
     <div id="updateControls" hidden>
       <div class="dialog-actions">
