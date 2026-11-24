@@ -26,8 +26,12 @@
     <p>Frontier City 与 Vice Throne 的逐国家/地区公开评分，每 4 小时自动刷新。</p>
     <div class="meta" id="meta"></div>
   </section>
+  <div class="stale-banner" id="staleBanner" hidden>
+    <div class="stale-text"><b>页面需要刷新</b><span id="staleText"></span></div>
+    <button class="button strong" id="reloadPage" type="button">立即刷新</button>
+  </div>
   <div class="toolbar">
-    <div class="hint">每次刷新都会保存逐国评分；趋势与变化记录可从首次记录开始追踪。</div>
+    <div class="hint">每次刷新都会保存逐国评分；趋势与变化记录可从首次记录开始追踪。<span class="ver">页面版本 <b id="pageVersion">__PAGE_VERSION__</b> · 若看不到版本号，说明是旧缓存，请按 Ctrl+F5</span></div>
     <div class="tool-actions"><button class="button" id="manualUpdate" type="button" title="在本页立即启动评分更新">手动更新</button><a class="button secondary" id="historyFile" href="data/history.json" download>下载完整历史</a><a class="button" id="xlsx" href="#">打开最新 Excel</a></div>
   </div>
   <div class="errorbox" id="errorbox"></div>
@@ -68,24 +72,45 @@
       <button class="icon-button" id="closeUpdateDialog" type="button" aria-label="关闭">×</button>
     </div>
     <div id="tokenSetup">
-      <label class="field-label" for="updateToken">更新令牌</label>
-      <input class="token-input" id="updateToken" type="password" autocomplete="off" placeholder="github_pat_...">
-      <p class="field-help">首次使用需保存一个仅限本仓库的 GitHub Fine-grained token，权限选择 <b>Actions: Read and write</b>。令牌只保存在当前浏览器，不会写入公开页面。</p>
+      <p class="step-lead">只需配置一次。之后每次点“手动更新”，都会在本页直接启动 GitHub Actions，不需要打开仓库。</p>
+      <ol class="steps">
+        <li><b>创建令牌</b>
+          <p>点下面的按钮，GitHub 令牌页会自动勾选所需权限。</p>
+          <div class="dialog-actions tight">
+            <a class="button strong" href="https://github.com/settings/tokens/new?scopes=public_repo,workflow&amp;description=Store%20ratings%20dashboard" target="_blank" rel="noopener noreferrer">打开 GitHub 创建令牌</a>
+            <a class="button secondary" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">改用 Fine-grained（权限更小）</a>
+          </div>
+        </li>
+        <li><b>确认权限</b>
+          <p>经典令牌确认已勾选 <code>public_repo</code> 与 <code>workflow</code>；Fine-grained 令牌请选择仓库 <code>store-ratings-dashboard</code>，并把仓库权限 <code>Actions</code> 设为 <b>Read and write</b>。</p>
+        </li>
+        <li><b>生成并粘贴</b>
+          <p>点页面底部的 <b>Generate token</b>，复制以 <code>ghp_</code> 或 <code>github_pat_</code> 开头的令牌，粘贴到下面输入框。</p>
+        </li>
+      </ol>
+      <details class="guide">
+        <summary>在 GitHub 里找不到入口？点开看菜单路径</summary>
+        <p>右上角头像 → <b>Settings</b> → <b>Developer settings</b> → <b>Personal access tokens</b> → <b>Tokens (classic)</b> → <b>Generate new token (classic)</b>。</p>
+        <p>Fine-grained 路径：同一页面的 <b>Fine-grained tokens</b> → <b>Generate new token</b>。</p>
+      </details>
+      <label class="field-label" for="updateToken">粘贴令牌</label>
+      <input class="token-input" id="updateToken" type="password" autocomplete="off" placeholder="ghp_... 或 github_pat_...">
       <div class="dialog-actions">
         <button class="button strong" id="saveUpdateToken" type="button">保存并启用</button>
-        <a class="button secondary" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">创建更新令牌</a>
       </div>
+      <p class="field-help">令牌只保存在这台电脑的当前浏览器（localStorage），不会上传到网站，也不会写入公开仓库；可随时在下方“清除令牌”或到 GitHub 撤销。</p>
     </div>
     <div id="updateControls" hidden>
       <div class="dialog-actions">
         <button class="button strong" id="startUpdate" type="button">立即更新</button>
         <button class="button secondary" id="changeUpdateToken" type="button">更换令牌</button>
         <button class="button secondary" id="clearUpdateToken" type="button">清除令牌</button>
-        <a class="button secondary" href="https://github.com/lixiangmei2021-alt/store-ratings-dashboard/actions/workflows/update-ratings.yml" target="_blank" rel="noopener noreferrer">查看运行记录</a>
+        <a class="button secondary" href="https://github.com/lixiangmei2021-alt/store-ratings-dashboard/actions/workflows/update-ratings.yml" target="_blank" rel="noopener noreferrer">备用：查看运行页</a>
       </div>
       <p class="field-help">更新通常需要 1–2 分钟，完成后页面会自动刷新。其他访客仍可正常查看，但只有保存了令牌的浏览器才能启动更新。</p>
     </div>
     <div class="update-status" id="updateStatus">尚未配置更新令牌。</div>
+    <p class="dialog-foot">如果点“手动更新”后直接跳到 GitHub 仓库、看不到这个弹窗，说明浏览器还在用旧页面：按 <b>Ctrl+F5</b>（Mac 为 ⌘+Shift+R）强制刷新一次即可。</p>
   </div>
 </dialog>
 <style>
@@ -98,12 +123,28 @@
 
 .panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 22px;margin:18px 0;box-shadow:0 12px 36px rgba(29,58,94,.065)}
 .panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:14px}.panel-head h2{font-size:20px;margin:0 0 4px;letter-spacing:-.2px}.panel-head p{margin:0;color:var(--muted);font-size:12.5px}.filters{display:flex;gap:8px;flex-wrap:wrap}.filters select{border:1px solid #cfdcf0;background:#f8fbff;color:#27476c;border-radius:9px;padding:8px 11px;font-size:12px;font-weight:650;outline:none;cursor:pointer}
-.tool-actions{display:flex;gap:8px;flex-wrap:wrap}.button.secondary{color:#405a7a;border-color:#d6e1ef;box-shadow:none}button.button{font:inherit;cursor:pointer}.button.strong{background:#2563eb;color:#fff;border-color:#2563eb;box-shadow:0 5px 14px rgba(37,99,235,.2)}.button:disabled{opacity:.55;cursor:wait;box-shadow:none}.update-dialog{border:0;border-radius:20px;padding:0;width:min(560px,calc(100vw - 28px));background:#fff;color:var(--ink);box-shadow:0 28px 90px rgba(12,31,56,.32)}.update-dialog::backdrop{background:rgba(12,28,48,.52);backdrop-filter:blur(3px)}.dialog-body{padding:22px}.dialog-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:18px}.dialog-head h2{font-size:20px;margin:0 0 4px}.dialog-head p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}.icon-button{appearance:none;border:0;background:#f1f5fa;color:#60718a;width:32px;height:32px;border-radius:50%;font-size:22px;line-height:1;cursor:pointer}.icon-button:hover{background:#e6edf7;color:#263f60}.field-label{display:block;font-size:12px;font-weight:700;color:#324e70;margin:0 0 7px}.token-input{width:100%;box-sizing:border-box;border:1px solid #cbd9ea;border-radius:10px;background:#f9fbfe;padding:11px 12px;color:#193554;font:inherit;font-size:13px;outline:none}.token-input:focus{border-color:#7aa6dd;box-shadow:0 0 0 3px #e6f0fd}.field-help{margin:9px 0 0;color:#73839a;font-size:11.5px;line-height:1.65}.dialog-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.dialog-actions .button{font-size:12px;padding:9px 12px}.update-status{margin-top:16px;padding:10px 12px;border-radius:10px;background:#f3f6fa;color:#687991;font-size:12px;line-height:1.6}.update-status.working{background:#eef6ff;border:1px solid #d5e6fb;color:#35618f}.update-status.ok{background:#eaf8f1;border:1px solid #caecd9;color:#08714e}.update-status.error{background:#fff0ef;border:1px solid #f3d0cd;color:#963d38}.delta{display:inline-block;margin-left:6px;padding:2px 5px;border-radius:5px;font-size:10px;font-weight:750;vertical-align:1px}.delta.up{color:#087951;background:#e7f8ef}.delta.down{color:#a24444;background:#fdeeee}.delta.flat{color:#6f7e92;background:#eef2f7}
+.tool-actions{display:flex;gap:8px;flex-wrap:wrap}.button.secondary{color:#405a7a;border-color:#d6e1ef;box-shadow:none}button.button{font:inherit;cursor:pointer}.button.strong{background:#2563eb;color:#fff;border-color:#2563eb;box-shadow:0 5px 14px rgba(37,99,235,.2)}.button:disabled{opacity:.55;cursor:wait;box-shadow:none}.update-dialog{border:0;border-radius:20px;padding:0;width:min(560px,calc(100vw - 28px));max-height:calc(100vh - 36px);overflow:auto;background:#fff;color:var(--ink);box-shadow:0 28px 90px rgba(12,31,56,.32)}.update-dialog::backdrop{background:rgba(12,28,48,.52);backdrop-filter:blur(3px)}.dialog-body{padding:22px}.dialog-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:18px}.dialog-head h2{font-size:20px;margin:0 0 4px}.dialog-head p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}.icon-button{appearance:none;border:0;background:#f1f5fa;color:#60718a;width:32px;height:32px;border-radius:50%;font-size:22px;line-height:1;cursor:pointer}.icon-button:hover{background:#e6edf7;color:#263f60}.field-label{display:block;font-size:12px;font-weight:700;color:#324e70;margin:0 0 7px}.token-input{width:100%;box-sizing:border-box;border:1px solid #cbd9ea;border-radius:10px;background:#f9fbfe;padding:11px 12px;color:#193554;font:inherit;font-size:13px;outline:none}.token-input:focus{border-color:#7aa6dd;box-shadow:0 0 0 3px #e6f0fd}.field-help{margin:9px 0 0;color:#73839a;font-size:11.5px;line-height:1.65}.dialog-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.dialog-actions .button{font-size:12px;padding:9px 12px}.update-status{margin-top:16px;padding:10px 12px;border-radius:10px;background:#f3f6fa;color:#687991;font-size:12px;line-height:1.6}.update-status.working{background:#eef6ff;border:1px solid #d5e6fb;color:#35618f}.update-status.ok{background:#eaf8f1;border:1px solid #caecd9;color:#08714e}.update-status.error{background:#fff0ef;border:1px solid #f3d0cd;color:#963d38}.delta{display:inline-block;margin-left:6px;padding:2px 5px;border-radius:5px;font-size:10px;font-weight:750;vertical-align:1px}.delta.up{color:#087951;background:#e7f8ef}.delta.down{color:#a24444;background:#fdeeee}.delta.flat{color:#6f7e92;background:#eef2f7}
 .trend-stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.trend-stat{background:#f5f9ff;border:1px solid #e4edf8;border-radius:10px;padding:8px 11px;color:#687a92;font-size:11px}.trend-stat b{display:block;color:#1c3b60;font-size:16px;margin-top:2px}.trend-stat small{font-size:11px;color:#6d7f95;font-weight:600;margin-left:3px}.trend-legend{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}.legend-item{appearance:none;display:inline-flex;align-items:center;gap:6px;border:1px solid #dfe9f5;background:#fff;border-radius:8px;padding:6px 9px;font:inherit;font-size:11.5px;font-weight:600;color:#456079;cursor:pointer;line-height:1;transition:border-color .15s,background .15s,opacity .15s}.legend-item:hover,.legend-item:focus-visible{border-color:#96b8e4;background:#f4f9ff;outline:none}.legend-item.selected{border-color:#2563eb;background:#eef5ff;box-shadow:0 0 0 2px #dbeafe}.legend-item.no-data{color:#9aa5b5;background:#f8f9fb}.legend-swatch{width:14px;height:3px;border-radius:2px;flex:0 0 auto}.legend-score{font-weight:800;color:#183b62;margin-left:2px}.chart-wrap{min-height:390px;background:linear-gradient(#fbfdff,#f7faff);border:1px solid #e9f0f8;border-radius:13px;padding:8px;overflow-x:auto}.chart-wrap svg{display:block;min-width:760px;width:100%;height:auto}.trend-series{transition:opacity .12s}.trend-series.dim{opacity:.07}.trend-help{margin-top:8px;color:#8190a4;font-size:11px;line-height:1.6}.trend-help strong{color:#5a6f89}
 .data-table{width:100%;border-collapse:collapse;min-width:760px}.data-table th{padding:11px 14px;text-align:left;font-size:11px;color:#66768d;background:#f7f9fc;border-bottom:1px solid var(--line);white-space:nowrap}.data-table td{padding:11px 14px;border-bottom:1px solid #eef3f8;font-size:12.5px;vertical-align:middle}.data-table tr:last-child td{border-bottom:0}.data-table tbody tr:hover{background:#f8fbff}.storetag{display:inline-flex;padding:4px 7px;border-radius:6px;background:#edf5ff;color:#2c5f9c;font-size:10px;font-weight:700}.storetag.apple{background:#eefaf8;color:#087e73}.old{color:#8290a3}.arrow{padding:0 7px;color:#95a3b6}.newval{font-weight:780;color:#193b65}.newval.up{color:#087951}.newval.down{color:#a24444}.empty{display:none;color:#8a97aa;font-size:12px;padding:20px 4px;text-align:center}
 .history{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 22px;margin-top:20px}.timeline{display:flex;flex-direction:column;gap:8px;max-height:520px;overflow:auto}.hist{display:grid;grid-template-columns:150px 1fr auto;gap:12px;align-items:center;padding:10px 12px;border-radius:10px;background:#f7faff;color:#61718a;font-size:11.5px;line-height:1.5;border:1px solid #edf3fa}.hist b{color:#25486f;font-size:12.5px}.hist .count{font-size:11px;color:#6c7e96}.hist .badge-mini{font-weight:700;padding:3px 7px;border-radius:6px;background:#eaf8f2;color:#0b7a56}.hist .badge-mini.zero{background:#eef2f7;color:#6d7b8e}.hist .badge-mini.err{background:#fff2df;color:#9b5a00}
 @media(max-width:900px){.panel-head{flex-direction:column}.chart-wrap svg{min-width:650px}.hist{grid-template-columns:1fr auto}.hist .count{grid-column:1/-1}}
 @media(max-width:560px){.panel{padding:14px 12px}.tool-actions{width:100%}.tool-actions .button{flex:1;justify-content:center}.filters select{flex:1}.hist{grid-template-columns:1fr}.hist .badge-mini{justify-self:start}.update-dialog{width:calc(100vw - 20px)}.dialog-body{padding:18px}.dialog-actions{flex-direction:column}.dialog-actions .button{width:100%;justify-content:center}}
+.stale-banner{display:flex;gap:14px;align-items:center;justify-content:space-between;background:#fff8e6;border:1px solid #f0d79a;color:#7a5713;border-radius:14px;padding:12px 16px;margin:16px 0 0;font-size:12.5px;flex-wrap:wrap}
+.stale-banner[hidden]{display:none}
+.stale-text{display:flex;flex-direction:column;gap:2px;line-height:1.55}
+.ver{display:block;margin-top:4px;font-size:11.5px;color:#8a97aa;font-weight:500}
+.steps{margin:0 0 14px;padding-left:0;list-style:none;counter-reset:step;display:flex;flex-direction:column;gap:9px}
+.steps>li{position:relative;padding:11px 13px 11px 40px;background:#f6f9fd;border:1px solid #e6eefa;border-radius:11px;font-size:12px;line-height:1.65;color:#54677f}
+.steps>li:before{counter-increment:step;content:counter(step);position:absolute;left:12px;top:11px;width:19px;height:19px;border-radius:50%;background:#2563eb;color:#fff;font-size:11px;font-weight:750;display:flex;align-items:center;justify-content:center}
+.steps>li>b{display:block;color:#22405f;font-size:12.5px;margin-bottom:2px}
+.steps>li p{margin:0;color:#5a6d85}
+.steps code{background:#eaf1fb;color:#2a5488;border-radius:4px;padding:1px 5px;font-size:11px;font-family:ui-monospace,Consolas,monospace}
+.dialog-actions.tight{margin-top:8px}
+.step-lead{margin:0 0 12px;font-size:12.5px;color:#5a6d85;line-height:1.65}
+.guide{margin:0 0 14px;font-size:11.5px;color:#6a7c94;background:#fbfcfe;border:1px dashed #dbe6f4;border-radius:10px;padding:9px 12px}
+.guide summary{cursor:pointer;color:#3a5f8c;font-weight:650}
+.guide p{margin:7px 0 0;line-height:1.65}
+.dialog-foot{margin:12px 0 0;padding-top:10px;border-top:1px dashed #e3ebf6;color:#8a97aa;font-size:11px;line-height:1.6}
 </style>
 <script>
 const DATA = __DATA__;
@@ -271,6 +312,7 @@ document.getElementById('changeDays').addEventListener('change',renderChangeLog)
 const UPDATE_REPO='lixiangmei2021-alt/store-ratings-dashboard';
 const UPDATE_WORKFLOW='update-ratings.yml';
 const UPDATE_TOKEN_KEY='storeRatingsUpdateToken';
+const PAGE_VERSION=document.getElementById('pageVersion').textContent.trim();
 const updateDialog=document.getElementById('updateDialog');
 let updatePollTimer=null;
 function getUpdateToken(){try{return localStorage.getItem(UPDATE_TOKEN_KEY)||''}catch(e){return ''}}
@@ -348,6 +390,34 @@ async function startRatingUpdate(){
   }
 }
 document.getElementById('startUpdate').addEventListener('click',startRatingUpdate);
+function showStaleBanner(text){
+  document.getElementById('staleText').textContent=text;
+  document.getElementById('staleBanner').hidden=false;
+}
+document.getElementById('reloadPage').addEventListener('click',()=>{
+  const url=new URL(location.href);url.searchParams.set('v',Date.now());location.replace(url.toString());
+});
+async function checkForNewerBuild(){
+  try{
+    const response=await fetch('version.json?ts='+Date.now(),{cache:'no-store'});
+    if(response.ok){
+      const info=await response.json();
+      if(info.version&&info.version!==PAGE_VERSION){
+        showStaleBanner('服务器已发布新版本 '+info.version+'，当前页面是 '+PAGE_VERSION+'。刷新后即可看到最新的手动更新按钮。');
+        return;
+      }
+    }
+  }catch(e){}
+  try{
+    const response=await fetch('data/latest.json?ts='+Date.now(),{cache:'no-store'});
+    if(response.ok){
+      const latest=await response.json();
+      const remote=Date.parse(latest.fetched_at||'');const local=Date.parse(DATA.updated_at||'');
+      if(Number.isFinite(remote)&&Number.isFinite(local)&&remote>local+60000)showStaleBanner('已有一轮更新的评分数据，刷新页面即可查看最新结果。');
+    }
+  }catch(e){}
+}
+checkForNewerBuild();
 renderMeta();renderCards();renderProducts();renderTrend();renderChangeLog();renderHistory();renderErrors();loadFullHistory();
 </script>
 </body>

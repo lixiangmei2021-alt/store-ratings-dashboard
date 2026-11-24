@@ -45,7 +45,7 @@ jobs:
         run: |
           git config user.name "store-ratings-bot"
           git config user.email "store-ratings-bot@users.noreply.github.com"
-          git add data/latest.json data/history.json 商店评分汇总_latest.xlsx index.html
+          git add data/latest.json data/history.json 商店评分汇总_latest.xlsx index.html version.json
           if git diff --cached --quiet; then
             echo "No data changes"
           else
@@ -58,6 +58,7 @@ jobs:
           mkdir -p _site
           cp index.html _site/index.html
           cp 商店评分汇总_latest.xlsx _site/商店评分汇总_latest.xlsx
+          cp version.json _site/version.json
           python - <<'PY'
           import json
           from pathlib import Path

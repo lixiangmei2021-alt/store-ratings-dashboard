@@ -25,6 +25,8 @@ HISTORY_JSON = DATA_DIR / "history.json"
 STATUS_JSON = DATA_DIR / "status.json"
 DASHBOARD = ROOT / os.environ.get("DASHBOARD_NAME", "评分看板.html")
 LATEST_XLSX = ROOT / "商店评分汇总_latest.xlsx"
+VERSION_JSON = ROOT / "version.json"
+PAGE_VERSION = "2026-11-24.1"
 TZ = ZoneInfo("Asia/Shanghai")
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -841,9 +843,14 @@ def write_dashboard(payload: dict) -> None:
         raise FileNotFoundError(f"缺少看板模板：{template_path}")
     template = template_path.read_text(encoding="utf-8")
     content = template.replace("__DATA__", json.dumps(payload, ensure_ascii=False).replace("</", "<\\/"))
+    content = content.replace("__PAGE_VERSION__", PAGE_VERSION)
     temp = ROOT / ".评分看板.html.tmp"
     temp.write_text(content, encoding="utf-8")
     os.replace(temp, DASHBOARD)
+    VERSION_JSON.write_text(
+        json.dumps({"version": PAGE_VERSION, "built_at": payload.get("updated_at")}, ensure_ascii=False),
+        encoding="utf-8",
+    )
 
 
 def main() -> int:
