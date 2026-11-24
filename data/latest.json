@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "fetched_at": "2026-11-24T15:35:53+08:00",
+  "fetched_at": "2026-11-24T16:56:45+08:00",
   "games": {
     "frontier": {
       "name": "Frontier City",
@@ -902,6 +902,6 @@
     "apple_total": 32
   },
   "errors": [],
-  "finished_at": "2026-11-24T15:36:48+08:00",
-  "duration_seconds": 55.3
+  "finished_at": "2026-11-24T16:57:23+08:00",
+  "duration_seconds": 37.5
 }
