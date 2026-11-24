@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated_at": "2026-11-24T04:46:00+08:00",
+  "updated_at": "2026-11-24T08:55:35+08:00",
   "snapshots": [
     {
       "at": "2026-11-16T10:07:08+08:00",
@@ -4382,6 +4382,249 @@
           "MO": [
             4.0,
             229,
+            null,
+            0
+          ],
+          "UA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "RU": [
+            2.6,
+            15,
+            null,
+            null
+          ]
+        }
+      }
+    },
+    {
+      "at": "2026-11-24T08:55:35+08:00",
+      "changes": 2,
+      "change_items": [
+        {
+          "country": "CA",
+          "country_name": "加拿大",
+          "store": "apple",
+          "old": 1.0,
+          "new": null,
+          "count": 0,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "MO",
+          "country_name": "中国澳门",
+          "store": "google",
+          "old": 4.0,
+          "new": 3.9,
+          "count": 228,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        }
+      ],
+      "metrics": {
+        "google_ok": 34,
+        "google_total": 34,
+        "apple_ok": 32,
+        "apple_total": 32
+      },
+      "errors": 0,
+      "ratings": {
+        "frontier": {
+          "US": [
+            3.7,
+            439,
+            4.3,
+            9
+          ],
+          "UK": [
+            3.7,
+            439,
+            5.0,
+            1
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "AU": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "DE": [
+            2.2,
+            439,
+            null,
+            0
+          ],
+          "FR": [
+            2.4,
+            439,
+            null,
+            0
+          ],
+          "ES": [
+            3.4,
+            439,
+            null,
+            0
+          ],
+          "MX": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "BR": [
+            3.5,
+            439,
+            5.0,
+            1
+          ],
+          "MY": [
+            3.0,
+            439,
+            null,
+            0
+          ],
+          "ID": [
+            4.3,
+            439,
+            null,
+            0
+          ],
+          "PH": [
+            4.3,
+            439,
+            null,
+            0
+          ],
+          "UA": [
+            2.7,
+            439,
+            null,
+            0
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "RU": [
+            2.4,
+            60,
+            null,
+            null
+          ]
+        },
+        "vice": {
+          "US": [
+            3.2,
+            228,
+            2.9,
+            17
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "AU": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "SG": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "MY": [
+            2.6,
+            228,
+            3.0,
+            2
+          ],
+          "UK": [
+            3.6,
+            228,
+            2.3,
+            3
+          ],
+          "DE": [
+            3.8,
+            228,
+            3.7,
+            3
+          ],
+          "FR": [
+            3.2,
+            228,
+            3.7,
+            3
+          ],
+          "ES": [
+            4.4,
+            228,
+            null,
+            0
+          ],
+          "MX": [
+            2.6,
+            228,
+            1.8,
+            4
+          ],
+          "BR": [
+            3.3,
+            228,
+            null,
+            0
+          ],
+          "JP": [
+            3.0,
+            228,
+            3.9,
+            7
+          ],
+          "KR": [
+            3.9,
+            228,
+            4.7,
+            7
+          ],
+          "TW": [
+            null,
+            null,
+            3.8,
+            4
+          ],
+          "HK": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "MO": [
+            3.9,
+            228,
             null,
             0
           ],
