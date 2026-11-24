@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "fetched_at": "2026-11-24T11:06:05+08:00",
+  "fetched_at": "2026-11-24T11:34:39+08:00",
   "games": {
     "frontier": {
       "name": "Frontier City",
@@ -410,8 +410,8 @@
           "google": {
             "ok": true,
             "rating": 3.2,
-            "rating_count": 227,
-            "rating_count_text": "227 reviews",
+            "rating_count": 229,
+            "rating_count_text": "229 reviews",
             "title": "Vice Throne",
             "error": null
           },
@@ -514,8 +514,8 @@
           "google": {
             "ok": true,
             "rating": 2.6,
-            "rating_count": 227,
-            "rating_count_text": "227 reviews",
+            "rating_count": 229,
+            "rating_count_text": "229 reviews",
             "title": "Vice Throne",
             "error": null
           },
@@ -540,8 +540,8 @@
           "google": {
             "ok": true,
             "rating": 3.6,
-            "rating_count": 227,
-            "rating_count_text": "227 reviews",
+            "rating_count": 229,
+            "rating_count_text": "229 reviews",
             "title": "Vice Throne",
             "error": null
           },
@@ -592,8 +592,8 @@
           "google": {
             "ok": true,
             "rating": 3.2,
-            "rating_count": 227,
-            "rating_count_text": "227 avis",
+            "rating_count": 229,
+            "rating_count_text": "229 avis",
             "title": "Vice Throne",
             "error": null
           },
@@ -696,8 +696,8 @@
           "google": {
             "ok": true,
             "rating": 3.0,
-            "rating_count": 227,
-            "rating_count_text": "227 件のレビュー",
+            "rating_count": 229,
+            "rating_count_text": "229 件のレビュー",
             "title": "Vice Throne",
             "error": null
           },
@@ -722,8 +722,8 @@
           "google": {
             "ok": true,
             "rating": 3.9,
-            "rating_count": 227,
-            "rating_count_text": "리뷰 227개",
+            "rating_count": 229,
+            "rating_count_text": "리뷰 229개",
             "title": "Vice Throne",
             "error": null
           },
@@ -799,9 +799,9 @@
           "apple_url": "https://apps.apple.com/mo/app/vice-throne/id6798176762?uo=4",
           "google": {
             "ok": true,
-            "rating": 3.9,
-            "rating_count": 227,
-            "rating_count_text": "227則評論",
+            "rating": 4.0,
+            "rating_count": 229,
+            "rating_count_text": "229則評論",
             "title": "Vice Throne",
             "error": null
           },
@@ -902,6 +902,6 @@
     "apple_total": 32
   },
   "errors": [],
-  "finished_at": "2026-11-24T11:06:55+08:00",
-  "duration_seconds": 49.8
+  "finished_at": "2026-11-24T11:35:25+08:00",
+  "duration_seconds": 45.8
 }
