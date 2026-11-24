@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "fetched_at": "2026-11-24T11:34:39+08:00",
+  "fetched_at": "2026-11-24T11:41:18+08:00",
   "games": {
     "frontier": {
       "name": "Frontier City",
@@ -78,7 +78,7 @@
             "available": true,
             "rating": 1.0,
             "rating_count": 1,
-            "rating_source": "app_store_page",
+            "rating_source": "itunes_lookup",
             "track_id": 6751943304,
             "track_name": "Frontier City",
             "bundle_id": "com.camelgames.xcity",
@@ -902,6 +902,6 @@
     "apple_total": 32
   },
   "errors": [],
-  "finished_at": "2026-11-24T11:35:25+08:00",
-  "duration_seconds": 45.8
+  "finished_at": "2026-11-24T11:42:00+08:00",
+  "duration_seconds": 42.6
 }
