@@ -33,7 +33,7 @@ Frontier City 与 Vice Throne 的逐国家/地区 Google Play、App Store 评分
 - Fine-grained 令牌没有把 **Repository permissions → Actions** 设为 **Read and write**。
 - 经典令牌没有同时勾选 `repo` 与 `workflow`。
 
-在弹窗中点 **检测令牌权限**，会显示当前账号、仓库权限、Actions 权限，并指出具体是哪一步不通过。
+在弹窗中点 **检测令牌权限**，会显示令牌类型、当前账号、仓库权限、Actions 权限，并**真实启动一次更新**来验证写入权限，最后指出具体是哪一步不通过。注意：`Actions: Read` 只能读，必须给 `Read and write`。
 
 ### 页面看起来是旧版
 
