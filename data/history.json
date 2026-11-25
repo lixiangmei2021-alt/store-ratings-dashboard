@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated_at": "2026-11-25T08:58:34+08:00",
+  "updated_at": "2026-11-25T13:00:23+08:00",
   "snapshots": [
     {
       "at": "2026-11-16T10:07:08+08:00",
@@ -8711,6 +8711,259 @@
           ],
           "MY": [
             2.6,
+            234,
+            3.0,
+            2
+          ],
+          "UK": [
+            3.6,
+            234,
+            2.3,
+            3
+          ],
+          "DE": [
+            3.7,
+            234,
+            3.7,
+            3
+          ],
+          "FR": [
+            3.2,
+            234,
+            3.7,
+            3
+          ],
+          "ES": [
+            4.4,
+            234,
+            null,
+            0
+          ],
+          "MX": [
+            2.6,
+            234,
+            1.8,
+            4
+          ],
+          "BR": [
+            3.4,
+            234,
+            null,
+            0
+          ],
+          "JP": [
+            3.3,
+            234,
+            3.9,
+            7
+          ],
+          "KR": [
+            3.9,
+            234,
+            4.7,
+            7
+          ],
+          "TW": [
+            null,
+            null,
+            3.8,
+            4
+          ],
+          "HK": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "MO": [
+            4.1,
+            234,
+            null,
+            0
+          ],
+          "UA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "RU": [
+            2.6,
+            15,
+            null,
+            null
+          ]
+        }
+      }
+    },
+    {
+      "at": "2026-11-25T13:00:23+08:00",
+      "changes": 3,
+      "change_items": [
+        {
+          "country": "BR",
+          "country_name": "巴西",
+          "store": "google",
+          "old": 3.5,
+          "new": 3.4,
+          "count": 443,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "RU",
+          "country_name": "俄罗斯",
+          "store": "google",
+          "old": 2.3,
+          "new": 2.2,
+          "count": 63,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "MY",
+          "country_name": "马来西亚",
+          "store": "google",
+          "old": 2.6,
+          "new": 3.0,
+          "count": 234,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        }
+      ],
+      "metrics": {
+        "google_ok": 34,
+        "google_total": 34,
+        "apple_ok": 32,
+        "apple_total": 32
+      },
+      "errors": 0,
+      "ratings": {
+        "frontier": {
+          "US": [
+            3.7,
+            443,
+            4.3,
+            9
+          ],
+          "UK": [
+            3.7,
+            443,
+            5.0,
+            1
+          ],
+          "CA": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "AU": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "DE": [
+            2.2,
+            443,
+            null,
+            0
+          ],
+          "FR": [
+            2.4,
+            443,
+            null,
+            0
+          ],
+          "ES": [
+            3.4,
+            443,
+            null,
+            0
+          ],
+          "MX": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "BR": [
+            3.4,
+            443,
+            5.0,
+            1
+          ],
+          "MY": [
+            3.0,
+            443,
+            null,
+            0
+          ],
+          "ID": [
+            4.3,
+            443,
+            null,
+            0
+          ],
+          "PH": [
+            4.3,
+            443,
+            null,
+            0
+          ],
+          "UA": [
+            2.7,
+            443,
+            null,
+            0
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "RU": [
+            2.2,
+            63,
+            null,
+            null
+          ]
+        },
+        "vice": {
+          "US": [
+            3.2,
+            234,
+            2.9,
+            17
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "AU": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "SG": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "MY": [
+            3.0,
             234,
             3.0,
             2
