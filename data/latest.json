@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "fetched_at": "2026-11-25T04:48:03+08:00",
+  "fetched_at": "2026-11-25T08:58:34+08:00",
   "games": {
     "frontier": {
       "name": "Frontier City",
@@ -16,8 +16,8 @@
           "google": {
             "ok": true,
             "rating": 3.7,
-            "rating_count": 441,
-            "rating_count_text": "441 reviews",
+            "rating_count": 442,
+            "rating_count_text": "442 reviews",
             "title": "Frontier City",
             "error": null
           },
@@ -42,8 +42,8 @@
           "google": {
             "ok": true,
             "rating": 3.7,
-            "rating_count": 441,
-            "rating_count_text": "441 reviews",
+            "rating_count": 442,
+            "rating_count_text": "442 reviews",
             "title": "Frontier City",
             "error": null
           },
@@ -120,8 +120,8 @@
           "google": {
             "ok": true,
             "rating": 2.2,
-            "rating_count": 441,
-            "rating_count_text": "441 Rezensionen",
+            "rating_count": 442,
+            "rating_count_text": "442 Rezensionen",
             "title": "Frontier City",
             "error": null
           },
@@ -146,8 +146,8 @@
           "google": {
             "ok": true,
             "rating": 2.4,
-            "rating_count": 441,
-            "rating_count_text": "441 avis",
+            "rating_count": 442,
+            "rating_count_text": "442 avis",
             "title": "Frontier City",
             "error": null
           },
@@ -172,8 +172,8 @@
           "google": {
             "ok": true,
             "rating": 3.4,
-            "rating_count": 441,
-            "rating_count_text": "441 reseñas",
+            "rating_count": 442,
+            "rating_count_text": "442 reseñas",
             "title": "Frontier City",
             "error": null
           },
@@ -224,8 +224,8 @@
           "google": {
             "ok": true,
             "rating": 3.5,
-            "rating_count": 441,
-            "rating_count_text": "441 avaliações",
+            "rating_count": 442,
+            "rating_count_text": "442 avaliações",
             "title": "Frontier City",
             "error": null
           },
@@ -250,8 +250,8 @@
           "google": {
             "ok": true,
             "rating": 3.0,
-            "rating_count": 441,
-            "rating_count_text": "441 reviews",
+            "rating_count": 442,
+            "rating_count_text": "442 reviews",
             "title": "Frontier City",
             "error": null
           },
@@ -276,8 +276,8 @@
           "google": {
             "ok": true,
             "rating": 4.3,
-            "rating_count": 441,
-            "rating_count_text": "441 ulasan",
+            "rating_count": 442,
+            "rating_count_text": "442 ulasan",
             "title": "Frontier City",
             "error": null
           },
@@ -302,8 +302,8 @@
           "google": {
             "ok": true,
             "rating": 4.3,
-            "rating_count": 441,
-            "rating_count_text": "441 reviews",
+            "rating_count": 442,
+            "rating_count_text": "442 reviews",
             "title": "Frontier City",
             "error": null
           },
@@ -328,8 +328,8 @@
           "google": {
             "ok": true,
             "rating": 2.7,
-            "rating_count": 441,
-            "rating_count_text": "Відгуки: 441",
+            "rating_count": 442,
+            "rating_count_text": "Відгуки: 442",
             "title": "Frontier City",
             "error": null
           },
@@ -380,9 +380,9 @@
         "apple_url": null,
         "google": {
           "ok": true,
-          "rating": 2.4,
-          "rating_count": 65,
-          "rating_count_text": "Отзывы: 65",
+          "rating": 2.3,
+          "rating_count": 66,
+          "rating_count_text": "Отзывы: 66",
           "title": "Frontier City",
           "error": null
         },
@@ -902,6 +902,6 @@
     "apple_total": 32
   },
   "errors": [],
-  "finished_at": "2026-11-25T04:48:51+08:00",
-  "duration_seconds": 48.8
+  "finished_at": "2026-11-25T08:59:15+08:00",
+  "duration_seconds": 41.2
 }
