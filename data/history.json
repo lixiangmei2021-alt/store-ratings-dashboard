@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated_at": "2026-11-26T08:58:52+08:00",
+  "updated_at": "2026-11-26T12:59:06+08:00",
   "snapshots": [
     {
       "at": "2026-11-16T10:07:08+08:00",
@@ -10229,6 +10229,249 @@
           ],
           "MX": [
             2.6,
+            239,
+            1.8,
+            4
+          ],
+          "BR": [
+            3.4,
+            239,
+            null,
+            0
+          ],
+          "JP": [
+            3.3,
+            239,
+            3.9,
+            7
+          ],
+          "KR": [
+            3.9,
+            239,
+            4.7,
+            7
+          ],
+          "TW": [
+            null,
+            null,
+            3.8,
+            4
+          ],
+          "HK": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "MO": [
+            4.1,
+            239,
+            null,
+            0
+          ],
+          "UA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "RU": [
+            2.7,
+            15,
+            null,
+            null
+          ]
+        }
+      }
+    },
+    {
+      "at": "2026-11-26T12:59:06+08:00",
+      "changes": 2,
+      "change_items": [
+        {
+          "country": "US",
+          "country_name": "美国",
+          "store": "google",
+          "old": 3.7,
+          "new": 3.6,
+          "count": 462,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "MX",
+          "country_name": "墨西哥",
+          "store": "google",
+          "old": 2.6,
+          "new": 2.8,
+          "count": 239,
+          "product": "vice",
+          "product_name": "Vice Throne"
+        }
+      ],
+      "metrics": {
+        "google_ok": 34,
+        "google_total": 34,
+        "apple_ok": 32,
+        "apple_total": 32
+      },
+      "errors": 0,
+      "ratings": {
+        "frontier": {
+          "US": [
+            3.6,
+            462,
+            4.3,
+            9
+          ],
+          "UK": [
+            3.7,
+            462,
+            5.0,
+            1
+          ],
+          "CA": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "AU": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "DE": [
+            2.2,
+            462,
+            null,
+            0
+          ],
+          "FR": [
+            2.4,
+            462,
+            null,
+            0
+          ],
+          "ES": [
+            3.0,
+            462,
+            null,
+            0
+          ],
+          "MX": [
+            3.2,
+            462,
+            null,
+            0
+          ],
+          "BR": [
+            3.4,
+            462,
+            5.0,
+            1
+          ],
+          "MY": [
+            3.0,
+            462,
+            null,
+            0
+          ],
+          "ID": [
+            4.3,
+            462,
+            null,
+            0
+          ],
+          "PH": [
+            4.3,
+            462,
+            null,
+            0
+          ],
+          "UA": [
+            2.7,
+            462,
+            null,
+            0
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "RU": [
+            2.3,
+            66,
+            null,
+            null
+          ]
+        },
+        "vice": {
+          "US": [
+            3.2,
+            239,
+            2.9,
+            17
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "AU": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "SG": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "MY": [
+            3.0,
+            239,
+            3.0,
+            2
+          ],
+          "UK": [
+            3.6,
+            239,
+            2.3,
+            3
+          ],
+          "DE": [
+            3.7,
+            239,
+            3.7,
+            3
+          ],
+          "FR": [
+            3.2,
+            239,
+            3.7,
+            3
+          ],
+          "ES": [
+            4.4,
+            239,
+            null,
+            0
+          ],
+          "MX": [
+            2.8,
             239,
             1.8,
             4

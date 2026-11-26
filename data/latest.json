@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "fetched_at": "2026-11-26T08:58:52+08:00",
+  "fetched_at": "2026-11-26T12:59:06+08:00",
   "games": {
     "frontier": {
       "name": "Frontier City",
@@ -15,7 +15,7 @@
           "apple_url": "https://apps.apple.com/us/app/frontier-city/id6751943304?uo=4",
           "google": {
             "ok": true,
-            "rating": 3.7,
+            "rating": 3.6,
             "rating_count": 462,
             "rating_count_text": "462 reviews",
             "title": "Frontier City",
@@ -643,7 +643,7 @@
           "apple_url": "https://apps.apple.com/mx/app/vice-throne/id6798176762?uo=4",
           "google": {
             "ok": true,
-            "rating": 2.6,
+            "rating": 2.8,
             "rating_count": 239,
             "rating_count_text": "239 reseñas",
             "title": "Vice Throne",
@@ -902,6 +902,6 @@
     "apple_total": 32
   },
   "errors": [],
-  "finished_at": "2026-11-26T08:59:34+08:00",
-  "duration_seconds": 41.7
+  "finished_at": "2026-11-26T12:59:48+08:00",
+  "duration_seconds": 42.2
 }
