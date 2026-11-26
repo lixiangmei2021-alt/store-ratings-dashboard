@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated_at": "2026-11-26T21:06:43+08:00",
+  "updated_at": "2026-11-27T00:59:50+08:00",
   "snapshots": [
     {
       "at": "2026-11-16T10:07:08+08:00",
@@ -10964,6 +10964,259 @@
           "MO": [
             4.2,
             242,
+            null,
+            0
+          ],
+          "UA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "RU": [
+            2.7,
+            15,
+            null,
+            null
+          ]
+        }
+      }
+    },
+    {
+      "at": "2026-11-27T00:59:50+08:00",
+      "changes": 3,
+      "change_items": [
+        {
+          "country": "DE",
+          "country_name": "德国",
+          "store": "google",
+          "old": 2.2,
+          "new": 2.4,
+          "count": 467,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "MX",
+          "country_name": "墨西哥",
+          "store": "google",
+          "old": 3.2,
+          "new": 3.0,
+          "count": 467,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        },
+        {
+          "country": "UA",
+          "country_name": "乌克兰",
+          "store": "google",
+          "old": 2.7,
+          "new": 2.9,
+          "count": 467,
+          "product": "frontier",
+          "product_name": "Frontier City"
+        }
+      ],
+      "metrics": {
+        "google_ok": 34,
+        "google_total": 34,
+        "apple_ok": 32,
+        "apple_total": 32
+      },
+      "errors": 0,
+      "ratings": {
+        "frontier": {
+          "US": [
+            3.6,
+            467,
+            4.3,
+            9
+          ],
+          "UK": [
+            3.7,
+            467,
+            5.0,
+            1
+          ],
+          "CA": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "AU": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "DE": [
+            2.4,
+            467,
+            null,
+            0
+          ],
+          "FR": [
+            2.4,
+            467,
+            null,
+            0
+          ],
+          "ES": [
+            3.0,
+            467,
+            null,
+            0
+          ],
+          "MX": [
+            3.0,
+            467,
+            null,
+            0
+          ],
+          "BR": [
+            3.4,
+            467,
+            5.0,
+            1
+          ],
+          "MY": [
+            3.0,
+            467,
+            null,
+            0
+          ],
+          "ID": [
+            4.3,
+            467,
+            null,
+            0
+          ],
+          "PH": [
+            4.3,
+            467,
+            null,
+            0
+          ],
+          "UA": [
+            2.9,
+            467,
+            null,
+            0
+          ],
+          "BY": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "RU": [
+            2.3,
+            67,
+            null,
+            null
+          ]
+        },
+        "vice": {
+          "US": [
+            3.2,
+            243,
+            2.9,
+            17
+          ],
+          "CA": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "AU": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "SG": [
+            null,
+            null,
+            1.0,
+            1
+          ],
+          "MY": [
+            3.0,
+            243,
+            3.0,
+            2
+          ],
+          "UK": [
+            3.6,
+            243,
+            2.3,
+            3
+          ],
+          "DE": [
+            3.7,
+            243,
+            3.7,
+            3
+          ],
+          "FR": [
+            3.2,
+            243,
+            3.7,
+            3
+          ],
+          "ES": [
+            4.4,
+            243,
+            null,
+            0
+          ],
+          "MX": [
+            2.8,
+            243,
+            1.8,
+            4
+          ],
+          "BR": [
+            3.4,
+            243,
+            null,
+            0
+          ],
+          "JP": [
+            3.3,
+            243,
+            3.9,
+            7
+          ],
+          "KR": [
+            3.9,
+            243,
+            4.7,
+            7
+          ],
+          "TW": [
+            null,
+            null,
+            3.8,
+            4
+          ],
+          "HK": [
+            null,
+            null,
+            null,
+            0
+          ],
+          "MO": [
+            4.2,
+            243,
             null,
             0
           ],
