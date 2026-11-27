@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "fetched_at": "2026-11-28T00:59:01+08:00",
+  "fetched_at": "2026-11-28T04:50:01+08:00",
   "games": {
     "frontier": {
       "name": "Frontier City",
@@ -878,9 +878,9 @@
         "apple_url": null,
         "google": {
           "ok": true,
-          "rating": 2.8,
-          "rating_count": 16,
-          "rating_count_text": "Отзывы: 16",
+          "rating": 2.9,
+          "rating_count": 15,
+          "rating_count_text": "Отзывы: 15",
           "title": "Vice Throne",
           "error": null
         },
@@ -902,6 +902,6 @@
     "apple_total": 32
   },
   "errors": [],
-  "finished_at": "2026-11-28T00:59:59+08:00",
-  "duration_seconds": 58.4
+  "finished_at": "2026-11-28T04:50:50+08:00",
+  "duration_seconds": 49.0
 }
