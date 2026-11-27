@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "fetched_at": "2026-11-27T16:57:13+08:00",
+  "fetched_at": "2026-11-27T21:02:23+08:00",
   "games": {
     "frontier": {
       "name": "Frontier City",
@@ -380,9 +380,9 @@
         "apple_url": null,
         "google": {
           "ok": true,
-          "rating": 2.3,
-          "rating_count": 71,
-          "rating_count_text": "Отзывы: 71",
+          "rating": 2.4,
+          "rating_count": 72,
+          "rating_count_text": "Отзывы: 72",
           "title": "Frontier City",
           "error": null
         },
@@ -902,6 +902,6 @@
     "apple_total": 32
   },
   "errors": [],
-  "finished_at": "2026-11-27T16:57:53+08:00",
-  "duration_seconds": 39.6
+  "finished_at": "2026-11-27T21:03:14+08:00",
+  "duration_seconds": 51.0
 }
