@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "fetched_at": "2026-11-27T21:02:23+08:00",
+  "fetched_at": "2026-11-28T00:59:01+08:00",
   "games": {
     "frontier": {
       "name": "Frontier City",
@@ -15,9 +15,9 @@
           "apple_url": "https://apps.apple.com/us/app/frontier-city/id6751943304?uo=4",
           "google": {
             "ok": true,
-            "rating": 3.7,
-            "rating_count": 463,
-            "rating_count_text": "463 reviews",
+            "rating": 3.6,
+            "rating_count": 465,
+            "rating_count_text": "465 reviews",
             "title": "Frontier City",
             "error": null
           },
@@ -42,8 +42,8 @@
           "google": {
             "ok": true,
             "rating": 3.4,
-            "rating_count": 463,
-            "rating_count_text": "463 reviews",
+            "rating_count": 465,
+            "rating_count_text": "465 reviews",
             "title": "Frontier City",
             "error": null
           },
@@ -120,8 +120,8 @@
           "google": {
             "ok": true,
             "rating": 2.4,
-            "rating_count": 463,
-            "rating_count_text": "463 Rezensionen",
+            "rating_count": 465,
+            "rating_count_text": "465 Rezensionen",
             "title": "Frontier City",
             "error": null
           },
@@ -146,8 +146,8 @@
           "google": {
             "ok": true,
             "rating": 2.3,
-            "rating_count": 463,
-            "rating_count_text": "463 avis",
+            "rating_count": 465,
+            "rating_count_text": "465 avis",
             "title": "Frontier City",
             "error": null
           },
@@ -172,8 +172,8 @@
           "google": {
             "ok": true,
             "rating": 3.0,
-            "rating_count": 463,
-            "rating_count_text": "463 reseñas",
+            "rating_count": 465,
+            "rating_count_text": "465 reseñas",
             "title": "Frontier City",
             "error": null
           },
@@ -198,8 +198,8 @@
           "google": {
             "ok": true,
             "rating": 3.0,
-            "rating_count": 463,
-            "rating_count_text": "463 reseñas",
+            "rating_count": 465,
+            "rating_count_text": "465 reseñas",
             "title": "Frontier City",
             "error": null
           },
@@ -224,8 +224,8 @@
           "google": {
             "ok": true,
             "rating": 3.5,
-            "rating_count": 463,
-            "rating_count_text": "463 avaliações",
+            "rating_count": 465,
+            "rating_count_text": "465 avaliações",
             "title": "Frontier City",
             "error": null
           },
@@ -250,8 +250,8 @@
           "google": {
             "ok": true,
             "rating": 3.0,
-            "rating_count": 463,
-            "rating_count_text": "463 reviews",
+            "rating_count": 465,
+            "rating_count_text": "465 reviews",
             "title": "Frontier City",
             "error": null
           },
@@ -276,8 +276,8 @@
           "google": {
             "ok": true,
             "rating": 4.3,
-            "rating_count": 463,
-            "rating_count_text": "463 ulasan",
+            "rating_count": 465,
+            "rating_count_text": "465 ulasan",
             "title": "Frontier City",
             "error": null
           },
@@ -302,8 +302,8 @@
           "google": {
             "ok": true,
             "rating": 4.3,
-            "rating_count": 463,
-            "rating_count_text": "463 reviews",
+            "rating_count": 465,
+            "rating_count_text": "465 reviews",
             "title": "Frontier City",
             "error": null
           },
@@ -328,8 +328,8 @@
           "google": {
             "ok": true,
             "rating": 2.9,
-            "rating_count": 463,
-            "rating_count_text": "Відгуки: 463",
+            "rating_count": 465,
+            "rating_count_text": "Відгуки: 465",
             "title": "Frontier City",
             "error": null
           },
@@ -902,6 +902,6 @@
     "apple_total": 32
   },
   "errors": [],
-  "finished_at": "2026-11-27T21:03:14+08:00",
-  "duration_seconds": 51.0
+  "finished_at": "2026-11-28T00:59:59+08:00",
+  "duration_seconds": 58.4
 }
