@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "fetched_at": "2026-11-28T12:53:51+08:00",
+  "fetched_at": "2026-11-28T16:46:13+08:00",
   "games": {
     "frontier": {
       "name": "Frontier City",
@@ -16,8 +16,8 @@
           "google": {
             "ok": true,
             "rating": 3.7,
-            "rating_count": 463,
-            "rating_count_text": "463 reviews",
+            "rating_count": 464,
+            "rating_count_text": "464 reviews",
             "title": "Frontier City",
             "error": null
           },
@@ -42,8 +42,8 @@
           "google": {
             "ok": true,
             "rating": 3.4,
-            "rating_count": 463,
-            "rating_count_text": "463 reviews",
+            "rating_count": 464,
+            "rating_count_text": "464 reviews",
             "title": "Frontier City",
             "error": null
           },
@@ -120,8 +120,8 @@
           "google": {
             "ok": true,
             "rating": 2.4,
-            "rating_count": 463,
-            "rating_count_text": "463 Rezensionen",
+            "rating_count": 464,
+            "rating_count_text": "464 Rezensionen",
             "title": "Frontier City",
             "error": null
           },
@@ -146,8 +146,8 @@
           "google": {
             "ok": true,
             "rating": 2.3,
-            "rating_count": 463,
-            "rating_count_text": "463 avis",
+            "rating_count": 464,
+            "rating_count_text": "464 avis",
             "title": "Frontier City",
             "error": null
           },
@@ -172,8 +172,8 @@
           "google": {
             "ok": true,
             "rating": 3.0,
-            "rating_count": 463,
-            "rating_count_text": "463 reseñas",
+            "rating_count": 464,
+            "rating_count_text": "464 reseñas",
             "title": "Frontier City",
             "error": null
           },
@@ -197,9 +197,9 @@
           "apple_url": "https://apps.apple.com/mx/app/frontier-city/id6751943304?uo=4",
           "google": {
             "ok": true,
-            "rating": 3.0,
-            "rating_count": 463,
-            "rating_count_text": "463 reseñas",
+            "rating": 3.1,
+            "rating_count": 464,
+            "rating_count_text": "464 reseñas",
             "title": "Frontier City",
             "error": null
           },
@@ -224,8 +224,8 @@
           "google": {
             "ok": true,
             "rating": 3.5,
-            "rating_count": 463,
-            "rating_count_text": "463 avaliações",
+            "rating_count": 464,
+            "rating_count_text": "464 avaliações",
             "title": "Frontier City",
             "error": null
           },
@@ -250,8 +250,8 @@
           "google": {
             "ok": true,
             "rating": 3.2,
-            "rating_count": 463,
-            "rating_count_text": "463 reviews",
+            "rating_count": 464,
+            "rating_count_text": "464 reviews",
             "title": "Frontier City",
             "error": null
           },
@@ -276,8 +276,8 @@
           "google": {
             "ok": true,
             "rating": 4.3,
-            "rating_count": 463,
-            "rating_count_text": "463 ulasan",
+            "rating_count": 464,
+            "rating_count_text": "464 ulasan",
             "title": "Frontier City",
             "error": null
           },
@@ -302,8 +302,8 @@
           "google": {
             "ok": true,
             "rating": 4.3,
-            "rating_count": 463,
-            "rating_count_text": "463 reviews",
+            "rating_count": 464,
+            "rating_count_text": "464 reviews",
             "title": "Frontier City",
             "error": null
           },
@@ -328,8 +328,8 @@
           "google": {
             "ok": true,
             "rating": 2.9,
-            "rating_count": 463,
-            "rating_count_text": "Відгуки: 463",
+            "rating_count": 464,
+            "rating_count_text": "Відгуки: 464",
             "title": "Frontier City",
             "error": null
           },
@@ -381,8 +381,8 @@
         "google": {
           "ok": true,
           "rating": 2.4,
-          "rating_count": 72,
-          "rating_count_text": "Отзывы: 72",
+          "rating_count": 73,
+          "rating_count_text": "Отзывы: 73",
           "title": "Frontier City",
           "error": null
         },
@@ -902,6 +902,6 @@
     "apple_total": 32
   },
   "errors": [],
-  "finished_at": "2026-11-28T12:54:33+08:00",
-  "duration_seconds": 41.7
+  "finished_at": "2026-11-28T16:46:51+08:00",
+  "duration_seconds": 38.6
 }
